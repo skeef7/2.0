@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рулетка</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div class="app">
+    <!-- Header with balance -->
+    <header class="header">
+      <div class="balance">
+        <span class="balance-amount">1000</span>
+        <span class="balance-currency">✵</span>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="main">
+      <!-- Roulette type selector -->
+      <div class="roulette-selector">
+        <button class="roulette-btn active" data-cost="25">
+          <span class="cost">25</span>
+          <span class="gem">✵</span>
+        </button>
+        <button class="roulette-btn" data-cost="50">
+          <span class="cost">50</span>
+          <span class="gem">✵</span>
+        </button>
+        <button class="roulette-btn" data-cost="100">
+          <span class="cost">100</span>
+          <span class="gem">✵</span>
+        </button>
+      </div>
+
+      <!-- Roulette container -->
+      <div class="roulette-container">
+        <div class="roulette-pointer"></div>
+        <div class="roulette-scope">
+          <ul class="roulette-list"></ul>
+        </div>
+      </div>
+
+      <!-- Demo mode toggle -->
+      <div class="demo-toggle">
+        <label class="toggle-label">
+          <input type="checkbox" id="demoMode" class="toggle-input">
+          <span class="toggle-slider"></span>
+          <span class="toggle-text">Демо режим</span>
+        </label>
+      </div>
+
+      <!-- Spin button -->
+      <button class="spin-btn" id="spinBtn">
+        <span class="spin-text">Мне повезёт!</span>
+        <span class="spin-cost">25 ✵</span>
+      </button>
+
+      <!-- Chances display -->
+      <div class="chances">
+        <h3 class="chances-title">Вы можете выиграть...</h3>
+        <div class="chances-list" id="chancesList">
+          <!-- Will be populated by JavaScript -->
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom navigation -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-page="roulette">
+        <div class="nav-icon">🎰</div>
+        <span class="nav-text">Рулетка</span>
+      </button>
+      <button class="nav-btn" data-page="inventory">
+        <div class="nav-icon">🎁</div>
+        <span class="nav-text">Инвентарь</span>
+      </button>
+      <button class="nav-btn" data-page="profile">
+        <div class="nav-icon">👤</div>
+        <span class="nav-text">Профиль</span>
+      </button>
+    </nav>
+
+    <!-- Inventory page -->
+    <div class="page inventory-page" id="inventoryPage">
+      <header class="page-header">
+        <button class="back-btn" onclick="app.navigateToPage('roulette')">←</button>
+        <h1>Инвентарь</h1>
+      </header>
+      <div class="inventory-grid" id="inventoryGrid">
+        <div class="empty-inventory">
+          <div class="empty-icon">📦</div>
+          <p>Ваш инвентарь пуст</p>
+          <p class="empty-subtitle">Крутите рулетку, чтобы получить призы!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile page -->
+    <div class="page profile-page" id="profilePage">
+      <header class="page-header">
+        <button class="back-btn" onclick="app.navigateToPage('roulette')">←</button>
+        <h1>Профиль</h1>
+      </header>
+      <div class="profile-content">
+        <div class="profile-avatar">
+          <div class="avatar-circle">👤</div>
+        </div>
+        <div class="profile-info">
+          <h2 class="profile-name">Игрок</h2>
+          <div class="profile-stats">
+            <div class="stat">
+              <span class="stat-label">Баланс</span>
+              <span class="stat-value">1000 ✵</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Всего прокруток</span>
+              <span class="stat-value" id="totalSpins">0</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Выиграно призов</span>
+              <span class="stat-value" id="totalWins">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Win modal -->
+    <div class="modal" id="winModal">
+      <div class="modal-content">
+        <div class="win-animation">
+          <div class="win-item" id="winItem"></div>
+        </div>
+        <h2 class="win-title">Поздравляем!</h2>
+        <p class="win-description" id="winDescription"></p>
+        <button class="modal-btn" onclick="closeWinModal()">Забрать</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
