@@ -120,7 +120,7 @@ class TelegramRouletteApp {
     const list = document.querySelector('.roulette-list');
     if (!list) return;
     
-    // Сначала сбрасываем позицию и очищаем активные классы
+    // Сбрасываем позицию и очищаем активные классы
     list.style.transition = 'none';
     list.style.transform = 'translateX(0px)';
     
@@ -131,7 +131,8 @@ class TelegramRouletteApp {
     list.innerHTML = '';
 
     const items = this.rouletteItems[this.currentCost];
-    const totalItems = 31; // Нечетное число для лучшего центрирования
+    // УВЕЛИЧИВАЕМ количество элементов для длинной ленты!
+    const totalItems = 200; // Гораздо больше элементов для предотвращения "обрыва"
 
     for (let i = 0; i < totalItems; i++) {
       const item = this.getRandomItem(items);
@@ -149,7 +150,9 @@ class TelegramRouletteApp {
 
     // Возвращаем transition после небольшой задержки
     setTimeout(() => {
-      list.style.transition = 'transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99)';
+      if (list) {
+        list.style.transition = 'transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99)';
+      }
     }, 50);
   }
 
@@ -212,27 +215,37 @@ class TelegramRouletteApp {
     spinBtn.disabled = true;
     spinBtn.innerHTML = '<div class="loading"></div>';
 
-    // НЕ генерируем новые элементы во время спина!
-    // Используем существующие элементы
+    // Генерируем новую ленту для каждого спина
+    this.generateRouletteItems();
+    
+    // Ждем немного для применения стилей
+    await new Promise(resolve => setTimeout(resolve, 100));
+
     const list = document.querySelector('.roulette-list');
     const items = list.querySelectorAll('.roulette-item');
     
     if (items.length === 0) {
-      // Если элементов нет, генерируем их
-      this.generateRouletteItems();
-      // Ждем немного для применения стилей
-      await new Promise(resolve => setTimeout(resolve, 100));
+      console.error('No roulette items found');
+      this.isSpinning = false;
+      spinBtn.disabled = false;
+      spinBtn.innerHTML = `
+        <span class="spin-text">Мне повезёт!</span>
+        <span class="spin-cost">${this.currentCost} ✵</span>
+      `;
+      return;
     }
 
-    // Получаем обновленный список элементов
-    const updatedItems = list.querySelectorAll('.roulette-item');
-    const winningIndex = Math.floor(updatedItems.length / 2); // Средний элемент
+    // Выбираем случайный индекс для выигрыша из средней части ленты
+    // Это гарантирует, что выигрышный элемент будет в видимой области
+    const minIndex = Math.floor(items.length * 0.4); // 40% от начала
+    const maxIndex = Math.floor(items.length * 0.6); // 60% от начала
+    const winningIndex = Math.floor(Math.random() * (maxIndex - minIndex)) + minIndex;
     
-    // Определяем выигрышный предмет заранее и обновляем его данные
+    // Определяем выигрышный предмет и обновляем его данные
     const winningItemData = this.getWinningItem();
-    if (updatedItems[winningIndex]) {
-      updatedItems[winningIndex].dataset.item = JSON.stringify(winningItemData);
-      updatedItems[winningIndex].innerHTML = `
+    if (items[winningIndex]) {
+      items[winningIndex].dataset.item = JSON.stringify(winningItemData);
+      items[winningIndex].innerHTML = `
         <img src="${winningItemData.img}" alt="${winningItemData.name}" loading="lazy">
         <div class="item-name">${winningItemData.name}</div>
       `;
@@ -243,26 +256,25 @@ class TelegramRouletteApp {
     const containerWidth = list.parentElement.offsetWidth;
     const centerOffset = containerWidth / 2 - itemWidth / 2;
     
-    // Добавляем несколько полных оборотов для реалистичности
-    const fullRotations = 3 + Math.random() * 2; // 3-5 полных оборотов
-    const totalDistance = fullRotations * (itemWidth * updatedItems.length);
+    // Рассчитываем финальную позицию так, чтобы выигрышный элемент был в центре
     const targetPosition = -(winningIndex * itemWidth) + centerOffset;
-    const finalPosition = -totalDistance + targetPosition;
     
-    // Добавляем небольшую случайность для естественности
-    const randomOffset = (Math.random() - 0.5) * 30;
-    const spinDistance = finalPosition + randomOffset;
+    // Добавляем небольшую случайность для естественности (но не слишком много)
+    const randomOffset = (Math.random() - 0.5) * 20;
+    const finalPosition = targetPosition + randomOffset;
+
+    console.log(`Spinning to index ${winningIndex}, position: ${finalPosition}px`);
 
     // Запускаем анимацию спина
-    list.style.transform = `translateX(${spinDistance}px)`;
+    list.style.transform = `translateX(${finalPosition}px)`;
 
     // Ждем завершения анимации
     await new Promise(resolve => setTimeout(resolve, 4200));
 
     // Отмечаем выигрышный элемент как активный
-    updatedItems.forEach(item => item.classList.remove('active'));
-    if (updatedItems[winningIndex]) {
-      updatedItems[winningIndex].classList.add('active');
+    items.forEach(item => item.classList.remove('active'));
+    if (items[winningIndex]) {
+      items[winningIndex].classList.add('active');
     }
 
     // Обрабатываем выигрыш
