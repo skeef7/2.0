@@ -120,11 +120,18 @@ class TelegramRouletteApp {
     const list = document.querySelector('.roulette-list');
     if (!list) return;
     
-    // Clear existing items
+    // Сначала сбрасываем позицию и очищаем активные классы
+    list.style.transition = 'none';
+    list.style.transform = 'translateX(0px)';
+    
+    // Принудительно применяем стили
+    list.offsetHeight;
+    
+    // Очищаем содержимое
     list.innerHTML = '';
 
     const items = this.rouletteItems[this.currentCost];
-    const totalItems = 31; // Odd number for better centering
+    const totalItems = 31; // Нечетное число для лучшего центрирования
 
     for (let i = 0; i < totalItems; i++) {
       const item = this.getRandomItem(items);
@@ -140,13 +147,10 @@ class TelegramRouletteApp {
       list.appendChild(li);
     }
 
-    // Reset position to start
-    list.style.transform = 'translateX(0px)';
-    
-    // Remove any active classes
-    list.querySelectorAll('.roulette-item').forEach(item => {
-      item.classList.remove('active');
-    });
+    // Возвращаем transition после небольшой задержки
+    setTimeout(() => {
+      list.style.transition = 'transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99)';
+    }, 50);
   }
 
   getRandomItem(items) {
@@ -208,50 +212,68 @@ class TelegramRouletteApp {
     spinBtn.disabled = true;
     spinBtn.innerHTML = '<div class="loading"></div>';
 
-    // Generate new items for this spin
-    this.generateRouletteItems();
-
+    // НЕ генерируем новые элементы во время спина!
+    // Используем существующие элементы
     const list = document.querySelector('.roulette-list');
     const items = list.querySelectorAll('.roulette-item');
-    const winningIndex = Math.floor(items.length / 2); // Middle item
-    const winningItem = JSON.parse(items[winningIndex].dataset.item);
+    
+    if (items.length === 0) {
+      // Если элементов нет, генерируем их
+      this.generateRouletteItems();
+      // Ждем немного для применения стилей
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
 
-    // Calculate spin distance with improved animation
+    // Получаем обновленный список элементов
+    const updatedItems = list.querySelectorAll('.roulette-item');
+    const winningIndex = Math.floor(updatedItems.length / 2); // Средний элемент
+    
+    // Определяем выигрышный предмет заранее и обновляем его данные
+    const winningItemData = this.getWinningItem();
+    if (updatedItems[winningIndex]) {
+      updatedItems[winningIndex].dataset.item = JSON.stringify(winningItemData);
+      updatedItems[winningIndex].innerHTML = `
+        <img src="${winningItemData.img}" alt="${winningItemData.name}" loading="lazy">
+        <div class="item-name">${winningItemData.name}</div>
+      `;
+    }
+
+    // Рассчитываем расстояние для спина
     const itemWidth = 100;
     const containerWidth = list.parentElement.offsetWidth;
     const centerOffset = containerWidth / 2 - itemWidth / 2;
     
-    // Add multiple full rotations for more realistic effect
-    const fullRotations = 3 + Math.random() * 2; // 3-5 full rotations
-    const totalDistance = fullRotations * (itemWidth * items.length);
+    // Добавляем несколько полных оборотов для реалистичности
+    const fullRotations = 3 + Math.random() * 2; // 3-5 полных оборотов
+    const totalDistance = fullRotations * (itemWidth * updatedItems.length);
     const targetPosition = -(winningIndex * itemWidth) + centerOffset;
     const finalPosition = -totalDistance + targetPosition;
     
-    // Add some randomness for natural feel
+    // Добавляем небольшую случайность для естественности
     const randomOffset = (Math.random() - 0.5) * 30;
     const spinDistance = finalPosition + randomOffset;
 
-    // Start the spin animation
+    // Запускаем анимацию спина
     list.style.transform = `translateX(${spinDistance}px)`;
 
-    // Wait for animation to complete
+    // Ждем завершения анимации
     await new Promise(resolve => setTimeout(resolve, 4200));
 
-    // Mark winning item as active
-    items.forEach(item => item.classList.remove('active'));
-    if (items[winningIndex]) {
-      items[winningIndex].classList.add('active');
+    // Отмечаем выигрышный элемент как активный
+    updatedItems.forEach(item => item.classList.remove('active'));
+    if (updatedItems[winningIndex]) {
+      updatedItems[winningIndex].classList.add('active');
     }
 
-    // Handle win
+    // Обрабатываем выигрыш
     if (!this.isDemoMode) {
-      this.addToInventory(winningItem);
+      this.addToInventory(winningItemData);
       this.stats.totalWins++;
     }
 
-    this.showWinModal(winningItem);
+    this.showWinModal(winningItemData);
     
-    // Reset button
+    // Сбрасываем кнопку
     spinBtn.disabled = false;
     spinBtn.innerHTML = `
       <span class="spin-text">Мне повезёт!</span>
@@ -261,6 +283,11 @@ class TelegramRouletteApp {
     this.isSpinning = false;
     this.updateUI();
     this.saveData();
+  }
+
+  getWinningItem() {
+    const items = this.rouletteItems[this.currentCost];
+    return this.getRandomItem(items);
   }
 
   addToInventory(item) {
