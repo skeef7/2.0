@@ -13,23 +13,44 @@ class TelegramRouletteApp {
     
     // Roulette items for different costs
     this.rouletteItems = {
-      25: [
-        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 45, value: 10 },
-        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 45, value: 25 },
-        { name: 'Box', img: 'IMG/case/Box.gif', chance: 20, value: 50 },
-        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 5, value: 100 }
+25: [
+        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 25, value: 10 },
+        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 25, value: 25 },
+        { name: 'Box', img: 'IMG/case/Box.gif', chance: 30, value: 50 },
+        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 30, value: 100 },
+        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 0.806, value: 200 },
+        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200 },
+        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200 },
+        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200 },
+        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200 },
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200 },
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200 }
       ],
       50: [
         { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 40, value: 25 },
         { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 35, value: 50 },
         { name: 'Box', img: 'IMG/case/Box.gif', chance: 20, value: 100 },
-        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 5, value: 200 }
+        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 5, value: 200 },
+        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 1, value: 400 },
+        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200 },
+        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200 },
+        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200 },
+        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200 },
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200 },
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200 }
       ],
       100: [
         { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 35, value: 50 },
         { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 30, value: 100 },
         { name: 'Box', img: 'IMG/case/Box.gif', chance: 25, value: 200 },
-        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 10, value: 500 }
+        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 10, value: 500 },
+        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 1, value: 700 },
+        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200 },
+        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200 },
+        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200 },
+        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200 },
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200 },
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200 }
       ]
     };
 
