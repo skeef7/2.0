@@ -118,6 +118,9 @@ class TelegramRouletteApp {
 
   generateRouletteItems() {
     const list = document.querySelector('.roulette-list');
+    if (!list) return;
+    
+    // Clear existing items
     list.innerHTML = '';
 
     const items = this.rouletteItems[this.currentCost];
@@ -137,8 +140,13 @@ class TelegramRouletteApp {
       list.appendChild(li);
     }
 
-    // Reset position
+    // Reset position to start
     list.style.transform = 'translateX(0px)';
+    
+    // Remove any active classes
+    list.querySelectorAll('.roulette-item').forEach(item => {
+      item.classList.remove('active');
+    });
   }
 
   getRandomItem(items) {
@@ -231,7 +239,9 @@ class TelegramRouletteApp {
 
     // Mark winning item as active
     items.forEach(item => item.classList.remove('active'));
-    items[winningIndex].classList.add('active');
+    if (items[winningIndex]) {
+      items[winningIndex].classList.add('active');
+    }
 
     // Handle win
     if (!this.isDemoMode) {
