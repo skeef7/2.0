@@ -344,9 +344,11 @@ class TelegramRouletteApp {
 
   sellItem() {
     if (this.currentWinItem) {
-      this.balance += this.currentWinItem.sellPrice;
+      // Capture the sellPrice before closing the modal
+      const sellPrice = this.currentWinItem.sellPrice;
+      this.balance += sellPrice;
       this.closeSellKeepModal();
-      this.showNotification(`Продано за ${this.currentWinItem.sellPrice} звёзд!`);
+      this.showNotification(`Продано за ${sellPrice} звёзд!`);
       this.updateUI();
       this.saveData();
     }
@@ -380,6 +382,33 @@ class TelegramRouletteApp {
     this.updateInventoryDisplay();
   }
 
+  // Sell item from inventory with 14% commission
+  sellInventoryItem(itemName) {
+    if (this.inventory[itemName] && this.inventory[itemName].count > 0) {
+      const item = this.inventory[itemName];
+      const sellPrice = Math.floor(item.sellPrice * 0.86); // 14% commission
+      
+      this.balance += sellPrice;
+      this.inventory[itemName].count--;
+      
+      if (this.inventory[itemName].count === 0) {
+        delete this.inventory[itemName];
+      }
+      
+      this.updateInventoryDisplay();
+      this.updateUI();
+      this.saveData();
+      this.showNotification(`Продано за ${sellPrice} звёзд! (комиссия 14%)`);
+      this.hapticFeedback();
+    }
+  }
+
+  // Withdraw item from inventory (placeholder for future functionality)
+  withdrawInventoryItem(itemName) {
+    this.showNotification('Функция вывода будет доступна в следующем обновлении!');
+    this.hapticFeedback();
+  }
+
   updateInventoryDisplay() {
     const inventoryGrid = document.getElementById('inventoryGrid');
     
@@ -397,6 +426,8 @@ class TelegramRouletteApp {
     inventoryGrid.innerHTML = '';
     
     Object.values(this.inventory).forEach(item => {
+      const sellPriceWithCommission = Math.floor(item.sellPrice * 0.86); // 14% commission
+      
       const div = document.createElement('div');
       div.className = 'inventory-item';
       
@@ -405,6 +436,15 @@ class TelegramRouletteApp {
         <div class="item-name">${item.name}</div>
         <div class="item-count">×${item.count}</div>
         <div class="item-value">${item.sellPrice} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon-small"></div>
+        <div class="item-actions">
+          <button class="action-btn sell-action-btn" onclick="app.sellInventoryItem('${item.name}')">
+            <span class="action-text">Продать</span>
+            <span class="action-price">${sellPriceWithCommission} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon-tiny"></span>
+          </button>
+          <button class="action-btn withdraw-action-btn" onclick="app.withdrawInventoryItem('${item.name}')">
+            Вывод
+          </button>
+        </div>
       `;
 
       inventoryGrid.appendChild(div);
