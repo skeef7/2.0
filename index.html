@@ -13,7 +13,7 @@
     <header class="header">
       <div class="balance">
         <span class="balance-amount">1000</span>
-        <span class="balance-currency">✵</span>
+        <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="balance-currency">
       </div>
     </header>
 
@@ -23,15 +23,15 @@
       <div class="roulette-selector">
         <button class="roulette-btn active" data-cost="25">
           <span class="cost">25</span>
-          <span class="gem">✵</span>
+          <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="gem">
         </button>
         <button class="roulette-btn" data-cost="50">
           <span class="cost">50</span>
-          <span class="gem">✵</span>
+          <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="gem">
         </button>
         <button class="roulette-btn" data-cost="100">
           <span class="cost">100</span>
-          <span class="gem">✵</span>
+          <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="gem">
         </button>
       </div>
 
@@ -55,7 +55,7 @@
       <!-- Spin button -->
       <button class="spin-btn" id="spinBtn">
         <span class="spin-text">Мне повезёт!</span>
-        <span class="spin-cost">25 ✵</span>
+        <span class="spin-cost">25 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon"></span>
       </button>
 
       <!-- Chances display -->
@@ -70,15 +70,21 @@
     <!-- Bottom navigation -->
     <nav class="bottom-nav">
       <button class="nav-btn active" data-page="roulette">
-        <div class="nav-icon">🎰</div>
+        <div class="nav-icon">
+          <img src="IMG/icons/roulette-icon.png" alt="Рулетка" class="nav-icon-img">
+        </div>
         <span class="nav-text">Рулетка</span>
       </button>
       <button class="nav-btn" data-page="inventory">
-        <div class="nav-icon">🎁</div>
+        <div class="nav-icon">
+          <img src="IMG/icons/inventory-icon.png" alt="Инвентарь" class="nav-icon-img">
+        </div>
         <span class="nav-text">Инвентарь</span>
       </button>
       <button class="nav-btn" data-page="profile">
-        <div class="nav-icon">👤</div>
+        <div class="nav-icon">
+          <img src="IMG/icons/profile-icon.png" alt="Профиль" class="nav-icon-img">
+        </div>
         <span class="nav-text">Профиль</span>
       </button>
     </nav>
@@ -113,7 +119,7 @@
           <div class="profile-stats">
             <div class="stat">
               <span class="stat-label">Баланс</span>
-              <span class="stat-value">1000 ✵</span>
+              <span class="stat-value">1000 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon"></span>
             </div>
             <div class="stat">
               <span class="stat-label">Всего прокруток</span>
@@ -128,7 +134,7 @@
       </div>
     </div>
 
-    <!-- Win modal -->
+    <!-- Win modal (for demo mode) -->
     <div class="modal" id="winModal">
       <div class="modal-content">
         <div class="win-animation">
@@ -137,6 +143,26 @@
         <h2 class="win-title">Поздравляем!</h2>
         <p class="win-description" id="winDescription"></p>
         <button class="modal-btn" onclick="closeWinModal()">Забрать</button>
+      </div>
+    </div>
+
+    <!-- Sell/Keep modal -->
+    <div class="modal" id="sellKeepModal">
+      <div class="modal-content">
+        <div class="win-animation">
+          <div class="win-item" id="sellKeepItem"></div>
+        </div>
+        <h2 class="win-title">Поздравляем!</h2>
+        <p class="win-description">Вы выиграли: <span id="sellKeepItemName"></span>!</p>
+        <div class="sell-keep-options">
+          <button class="modal-btn sell-btn" onclick="sellItem()">
+            <span>Продать за</span>
+            <span id="sellPrice"></span>
+          </button>
+          <button class="modal-btn keep-btn" onclick="keepItem()">
+            Оставить в инвентаре
+          </button>
+        </div>
       </div>
     </div>
   </div>

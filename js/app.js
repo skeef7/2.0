@@ -11,46 +11,46 @@ class TelegramRouletteApp {
       totalWins: 0
     };
     
-    // Roulette items for different costs
+    // Roulette items for different costs with sell values
     this.rouletteItems = {
-25: [
-        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 25, value: 10 },
-        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 25, value: 25 },
-        { name: 'Box', img: 'IMG/case/Box.gif', chance: 30, value: 50 },
-        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 30, value: 100 },
-        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 0.806, value: 200 },
-        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200 },
-        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200 },
-        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200 },
-        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200 },
-        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200 },
-        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200 }
+      25: [
+        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 25, value: 10, sellPrice: 15 },
+        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 25, value: 25, sellPrice: 30 },
+        { name: 'Box', img: 'IMG/case/Box.gif', chance: 30, value: 50, sellPrice: 40 },
+        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 30, value: 100, sellPrice: 80 },
+        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 0.806, value: 200, sellPrice: 150 },
+        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200, sellPrice: 160 },
+        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200, sellPrice: 140 },
+        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200, sellPrice: 170 },
+        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200, sellPrice: 130 },
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 180 },
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200, sellPrice: 120 }
       ],
       50: [
-        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 40, value: 25 },
-        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 35, value: 50 },
-        { name: 'Box', img: 'IMG/case/Box.gif', chance: 20, value: 100 },
-        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 5, value: 200 },
-        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 1, value: 400 },
-        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200 },
-        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200 },
-        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200 },
-        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200 },
-        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200 },
-        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200 }
+        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 40, value: 25, sellPrice: 35 },
+        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 35, value: 50, sellPrice: 60 },
+        { name: 'Box', img: 'IMG/case/Box.gif', chance: 20, value: 100, sellPrice: 85 },
+        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 5, value: 200, sellPrice: 170 },
+        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 1, value: 400, sellPrice: 320 },
+        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200, sellPrice: 180 },
+        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200, sellPrice: 160 },
+        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200, sellPrice: 190 },
+        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200, sellPrice: 150 },
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 200 },
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200, sellPrice: 140 }
       ],
       100: [
-        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 35, value: 50 },
-        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 30, value: 100 },
-        { name: 'Box', img: 'IMG/case/Box.gif', chance: 25, value: 200 },
-        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 10, value: 500 },
-        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 1, value: 700 },
-        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200 },
-        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200 },
-        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200 },
-        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200 },
-        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200 },
-        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200 }
+        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 35, value: 50, sellPrice: 70 },
+        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 30, value: 100, sellPrice: 120 },
+        { name: 'Box', img: 'IMG/case/Box.gif', chance: 25, value: 200, sellPrice: 170 },
+        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 10, value: 500, sellPrice: 400 },
+        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 1, value: 700, sellPrice: 550 },
+        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200, sellPrice: 180 },
+        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200, sellPrice: 160 },
+        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200, sellPrice: 190 },
+        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200, sellPrice: 150 },
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 200 },
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200, sellPrice: 140 }
       ]
     };
 
@@ -127,8 +127,9 @@ class TelegramRouletteApp {
     });
     document.querySelector(`[data-cost="${cost}"]`).classList.add('active');
 
-    // Update spin button
-    document.querySelector('.spin-cost').textContent = `${cost} ✵`;
+    // Update spin button with PNG currency
+    const spinCostElement = document.querySelector('.spin-cost');
+    spinCostElement.innerHTML = `${cost} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon">`;
 
     // Regenerate items and update chances
     this.generateRouletteItems();
@@ -251,7 +252,7 @@ class TelegramRouletteApp {
       spinBtn.disabled = false;
       spinBtn.innerHTML = `
         <span class="spin-text">Мне повезёт!</span>
-        <span class="spin-cost">${this.currentCost} ✵</span>
+        <span class="spin-cost">${this.currentCost} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon"></span>
       `;
       return;
     }
@@ -300,17 +301,18 @@ class TelegramRouletteApp {
 
     // Обрабатываем выигрыш
     if (!this.isDemoMode) {
-      this.addToInventory(winningItemData);
       this.stats.totalWins++;
+      // Show sell/keep modal instead of directly adding to inventory
+      this.showSellKeepModal(winningItemData);
+    } else {
+      this.showWinModal(winningItemData);
     }
-
-    this.showWinModal(winningItemData);
     
     // Сбрасываем кнопку
     spinBtn.disabled = false;
     spinBtn.innerHTML = `
       <span class="spin-text">Мне повезёт!</span>
-      <span class="spin-cost">${this.currentCost} ✵</span>
+      <span class="spin-cost">${this.currentCost} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon"></span>
     `;
 
     this.isSpinning = false;
@@ -321,6 +323,48 @@ class TelegramRouletteApp {
   getWinningItem() {
     const items = this.rouletteItems[this.currentCost];
     return this.getRandomItem(items);
+  }
+
+  showSellKeepModal(item) {
+    const modal = document.getElementById('sellKeepModal');
+    const winItem = document.getElementById('sellKeepItem');
+    const itemName = document.getElementById('sellKeepItemName');
+    const sellPrice = document.getElementById('sellPrice');
+
+    winItem.innerHTML = `<img src="${item.img}" alt="${item.name}">`;
+    itemName.textContent = item.name;
+    sellPrice.innerHTML = `${item.sellPrice} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon">`;
+
+    // Store current item for sell/keep actions
+    this.currentWinItem = item;
+
+    modal.classList.add('active');
+    this.hapticFeedback();
+  }
+
+  sellItem() {
+    if (this.currentWinItem) {
+      this.balance += this.currentWinItem.sellPrice;
+      this.closeSellKeepModal();
+      this.showNotification(`Продано за ${this.currentWinItem.sellPrice} звёзд!`);
+      this.updateUI();
+      this.saveData();
+    }
+  }
+
+  keepItem() {
+    if (this.currentWinItem) {
+      this.addToInventory(this.currentWinItem);
+      this.closeSellKeepModal();
+      this.showNotification(`${this.currentWinItem.name} добавлен в инвентарь!`);
+      this.saveData();
+    }
+  }
+
+  closeSellKeepModal() {
+    const modal = document.getElementById('sellKeepModal');
+    modal.classList.remove('active');
+    this.currentWinItem = null;
   }
 
   addToInventory(item) {
@@ -360,6 +404,7 @@ class TelegramRouletteApp {
         <img src="${item.img}" alt="${item.name}" loading="lazy">
         <div class="item-name">${item.name}</div>
         <div class="item-count">×${item.count}</div>
+        <div class="item-value">${item.sellPrice} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon-small"></div>
       `;
 
       inventoryGrid.appendChild(div);
@@ -422,16 +467,17 @@ class TelegramRouletteApp {
     document.getElementById('totalSpins').textContent = this.stats.totalSpins;
     document.getElementById('totalWins').textContent = this.stats.totalWins;
     
-    // Update balance in profile stats
+    // Update balance in profile stats with PNG currency
     const balanceStatValue = document.querySelector('.stat-value');
     if (balanceStatValue) {
-      balanceStatValue.textContent = `${this.balance} ✵`;
+      balanceStatValue.innerHTML = `${this.balance} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon">`;
     }
   }
 
   updateUI() {
-    // Update balance
-    document.querySelector('.balance-amount').textContent = this.balance;
+    // Update balance with PNG currency
+    const balanceAmount = document.querySelector('.balance-amount');
+    balanceAmount.textContent = this.balance;
     
     // Update spin button state
     const spinBtn = document.getElementById('spinBtn');
@@ -445,10 +491,11 @@ class TelegramRouletteApp {
 
     // Update demo mode indicator
     const demoToggle = document.getElementById('demoMode');
+    const spinCostElement = document.querySelector('.spin-cost');
     if (this.isDemoMode) {
-      document.querySelector('.spin-cost').textContent = '🆓';
+      spinCostElement.textContent = '🆓';
     } else {
-      document.querySelector('.spin-cost').textContent = `${this.currentCost} ✵`;
+      spinCostElement.innerHTML = `${this.currentCost} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon">`;
     }
   }
 
@@ -514,9 +561,21 @@ class TelegramRouletteApp {
   }
 }
 
-// Global function for modal
+// Global functions for modals
 window.closeWinModal = function() {
   app.closeWinModal();
+};
+
+window.closeSellKeepModal = function() {
+  app.closeSellKeepModal();
+};
+
+window.sellItem = function() {
+  app.sellItem();
+};
+
+window.keepItem = function() {
+  app.keepItem();
 };
 
 // Initialize app when DOM is loaded
