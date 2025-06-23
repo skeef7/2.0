@@ -14,43 +14,43 @@ class TelegramRouletteApp {
     // Roulette items for different costs with sell values
     this.rouletteItems = {
       25: [
-        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 25, value: 10, sellPrice: 15 },
-        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 25, value: 25, sellPrice: 30 },
-        { name: 'Box', img: 'IMG/case/Box.gif', chance: 30, value: 50, sellPrice: 40 },
-        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 30, value: 100, sellPrice: 80 },
-        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 0.806, value: 200, sellPrice: 150 },
-        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200, sellPrice: 160 },
-        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200, sellPrice: 140 },
-        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200, sellPrice: 170 },
-        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200, sellPrice: 130 },
-        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 180 },
-        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200, sellPrice: 120 }
+        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 25, value: 10, sellPrice: 15, rarity: 'common' },
+        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 25, value: 25, sellPrice: 30, rarity: 'common' },
+        { name: 'Box', img: 'IMG/case/Box.gif', chance: 30, value: 50, sellPrice: 40, rarity: 'rare' },
+        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 30, value: 100, sellPrice: 80, rarity: 'rare' },
+        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 0.806, value: 200, sellPrice: 150, rarity: 'epic' },
+        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200, sellPrice: 160, rarity: 'epic' },
+        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200, sellPrice: 140, rarity: 'epic' },
+        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200, sellPrice: 170, rarity: 'epic' },
+        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200, sellPrice: 130, rarity: 'epic' },
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 180, rarity: 'legendary' },
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200, sellPrice: 120, rarity: 'epic' }
       ],
       50: [
-        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 40, value: 25, sellPrice: 35 },
-        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 35, value: 50, sellPrice: 60 },
-        { name: 'Box', img: 'IMG/case/Box.gif', chance: 20, value: 100, sellPrice: 85 },
-        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 5, value: 200, sellPrice: 170 },
-        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 1, value: 400, sellPrice: 320 },
-        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200, sellPrice: 180 },
-        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200, sellPrice: 160 },
-        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200, sellPrice: 190 },
-        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200, sellPrice: 150 },
-        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 200 },
-        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200, sellPrice: 140 }
+        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 40, value: 25, sellPrice: 35, rarity: 'common' },
+        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 35, value: 50, sellPrice: 60, rarity: 'common' },
+        { name: 'Box', img: 'IMG/case/Box.gif', chance: 20, value: 100, sellPrice: 85, rarity: 'rare' },
+        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 5, value: 200, sellPrice: 170, rarity: 'rare' },
+        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 1, value: 400, sellPrice: 320, rarity: 'epic' },
+        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200, sellPrice: 180, rarity: 'epic' },
+        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200, sellPrice: 160, rarity: 'epic' },
+        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200, sellPrice: 190, rarity: 'epic' },
+        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200, sellPrice: 150, rarity: 'epic' },
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 200, rarity: 'legendary' },
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200, sellPrice: 140, rarity: 'epic' }
       ],
       100: [
-        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 35, value: 50, sellPrice: 70 },
-        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 30, value: 100, sellPrice: 120 },
-        { name: 'Box', img: 'IMG/case/Box.gif', chance: 25, value: 200, sellPrice: 170 },
-        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 10, value: 500, sellPrice: 400 },
-        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 1, value: 700, sellPrice: 550 },
-        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200, sellPrice: 180 },
-        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200, sellPrice: 160 },
-        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200, sellPrice: 190 },
-        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200, sellPrice: 150 },
-        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 200 },
-        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200, sellPrice: 140 }
+        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 35, value: 50, sellPrice: 70, rarity: 'common' },
+        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 30, value: 100, sellPrice: 120, rarity: 'common' },
+        { name: 'Box', img: 'IMG/case/Box.gif', chance: 25, value: 200, sellPrice: 170, rarity: 'rare' },
+        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 10, value: 500, sellPrice: 400, rarity: 'rare' },
+        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 1, value: 700, sellPrice: 550, rarity: 'epic' },
+        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200, sellPrice: 180, rarity: 'epic' },
+        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200, sellPrice: 160, rarity: 'epic' },
+        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200, sellPrice: 190, rarity: 'epic' },
+        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200, sellPrice: 150, rarity: 'epic' },
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 200, rarity: 'legendary' },
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200, sellPrice: 140, rarity: 'epic' }
       ]
     };
 
@@ -356,9 +356,11 @@ class TelegramRouletteApp {
 
   keepItem() {
     if (this.currentWinItem) {
+      // Capture the item name before closing the modal
+      const itemName = this.currentWinItem.name;
       this.addToInventory(this.currentWinItem);
       this.closeSellKeepModal();
-      this.showNotification(`${this.currentWinItem.name} добавлен в инвентарь!`);
+      this.showNotification(`${itemName} добавлен в инвентарь!`);
       this.saveData();
     }
   }
@@ -429,21 +431,29 @@ class TelegramRouletteApp {
       const sellPriceWithCommission = Math.floor(item.sellPrice * 0.86); // 14% commission
       
       const div = document.createElement('div');
-      div.className = 'inventory-item';
+      div.className = `inventory-item ${item.rarity || 'common'}`;
       
       div.innerHTML = `
-        <img src="${item.img}" alt="${item.name}" loading="lazy">
-        <div class="item-name">${item.name}</div>
-        <div class="item-count">×${item.count}</div>
-        <div class="item-value">${item.sellPrice} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon-small"></div>
-        <div class="item-actions">
-          <button class="action-btn sell-action-btn" onclick="app.sellInventoryItem('${item.name}')">
-            <span class="action-text">Продать</span>
-            <span class="action-price">${sellPriceWithCommission} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon-tiny"></span>
-          </button>
-          <button class="action-btn withdraw-action-btn" onclick="app.withdrawInventoryItem('${item.name}')">
-            Вывод
-          </button>
+        <div class="item-header">
+          <div class="item-count">×${item.count}</div>
+          <div class="item-value">${item.sellPrice} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon-small"></div>
+        </div>
+        <div class="item-image">
+          <img src="${item.img}" alt="${item.name}" loading="lazy">
+        </div>
+        <div class="item-info">
+          <div class="item-name">${item.name}</div>
+          <div class="item-actions">
+            <button class="action-btn sell-btn" onclick="app.sellInventoryItem('${item.name}')">
+              <span class="btn-icon">💰</span>
+              <span class="btn-text">Продать</span>
+              <span class="btn-price">${sellPriceWithCommission}</span>
+            </button>
+            <button class="action-btn withdraw-btn" onclick="app.withdrawInventoryItem('${item.name}')">
+              <span class="btn-icon">📤</span>
+              <span class="btn-text">Вывод</span>
+            </button>
+          </div>
         </div>
       `;
 
