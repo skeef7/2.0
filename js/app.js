@@ -356,9 +356,11 @@ class TelegramRouletteApp {
 
   keepItem() {
     if (this.currentWinItem) {
+      // Capture the item name before closing the modal
+      const itemName = this.currentWinItem.name;
       this.addToInventory(this.currentWinItem);
       this.closeSellKeepModal();
-      this.showNotification(`${this.currentWinItem.name} добавлен в инвентарь!`);
+      this.showNotification(`${itemName} добавлен в инвентарь!`);
       this.saveData();
     }
   }
