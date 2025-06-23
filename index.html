@@ -95,6 +95,16 @@
         <button class="back-btn" onclick="app.navigateToPage('roulette')">←</button>
         <h1>Инвентарь</h1>
       </header>
+      
+      <!-- Inventory controls -->
+      <div class="inventory-controls">
+        <input type="text" class="inventory-search" placeholder="Поиск предметов..." id="inventorySearch">
+        <button class="sort-btn" id="sortBtn" onclick="app.toggleSort()">
+          <span>Сортировка</span>
+          <span>↕️</span>
+        </button>
+      </div>
+
       <div class="inventory-grid" id="inventoryGrid">
         <div class="empty-inventory">
           <div class="empty-icon">📦</div>

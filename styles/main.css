@@ -18,8 +18,12 @@
   --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   --gradient-sell: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
   --gradient-keep: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-rare: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+  --gradient-epic: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+  --gradient-legendary: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
   --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.3);
   --shadow-secondary: 0 4px 16px rgba(0, 0, 0, 0.2);
+  --shadow-inventory: 0 6px 24px rgba(0, 0, 0, 0.25);
 }
 
 * {
@@ -514,6 +518,11 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .back-btn {
@@ -543,134 +552,201 @@ body {
   margin-right: 40px; /* Compensate for back button */
 }
 
-/* Inventory page */
+/* Inventory page - Enhanced */
 .inventory-grid {
-  padding: 20px;
+  padding: 24px 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .inventory-item {
   background: var(--tg-theme-section-bg-color);
-  border-radius: 12px;
-  padding: 16px;
+  border-radius: 16px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  box-shadow: var(--shadow-secondary);
+  gap: 12px;
+  box-shadow: var(--shadow-inventory);
   transition: all 0.3s ease;
+  position: relative;
+  border: 2px solid transparent;
+  overflow: hidden;
+}
+
+.inventory-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .inventory-item:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-primary);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  border-color: rgba(106, 183, 255, 0.3);
+}
+
+.inventory-item:hover::before {
+  opacity: 1;
 }
 
 .inventory-item img {
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
-  border-radius: 6px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+  transition: transform 0.3s ease;
+}
+
+.inventory-item:hover img {
+  transform: scale(1.1);
 }
 
 .inventory-item .item-name {
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
   text-align: center;
   color: var(--tg-theme-text-color);
+  line-height: 1.3;
+  margin-bottom: 4px;
 }
 
 .inventory-item .item-count {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--tg-theme-hint-color);
   background: rgba(255, 255, 255, 0.1);
-  padding: 2px 8px;
-  border-radius: 10px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  min-width: 24px;
+  text-align: center;
 }
 
 .inventory-item .item-value {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--tg-theme-link-color);
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
+  font-weight: 600;
+  background: rgba(106, 183, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 10px;
 }
 
 .item-actions {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   width: 100%;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 .action-btn {
   flex: 1;
-  padding: 6px 8px;
+  padding: 10px 12px;
   border: none;
-  border-radius: 8px;
-  font-size: 10px;
-  font-weight: 500;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.action-btn:hover::before {
+  left: 100%;
 }
 
 .sell-action-btn {
   background: var(--gradient-sell);
   color: white;
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.2);
 }
 
 .sell-action-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
 }
 
 .withdraw-action-btn {
   background: var(--gradient-primary);
   color: white;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
 }
 
 .withdraw-action-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
 }
 
 .action-text {
-  font-size: 9px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .action-price {
-  font-size: 8px;
+  font-size: 9px;
   display: flex;
   align-items: center;
   gap: 2px;
+  opacity: 0.9;
 }
 
 .empty-inventory {
   grid-column: 1 / -1;
   text-align: center;
-  padding: 60px 20px;
+  padding: 80px 20px;
   color: var(--tg-theme-hint-color);
 }
 
 .empty-icon {
-  font-size: 48px;
-  margin-bottom: 16px;
+  font-size: 64px;
+  margin-bottom: 24px;
+  opacity: 0.6;
 }
 
 .empty-inventory p {
-  font-size: 16px;
-  margin-bottom: 8px;
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-weight: 500;
 }
 
 .empty-subtitle {
   font-size: 14px;
   opacity: 0.7;
+  line-height: 1.4;
 }
 
 /* Profile page */
@@ -867,6 +943,65 @@ body {
   font-size: 14px;
 }
 
+/* Inventory filters and sorting */
+.inventory-controls {
+  padding: 20px;
+  background: var(--tg-theme-section-bg-color);
+  margin: 0 20px 20px;
+  border-radius: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.inventory-search {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--tg-theme-text-color);
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.inventory-search:focus {
+  border-color: var(--tg-theme-link-color);
+  box-shadow: 0 0 0 3px rgba(106, 183, 255, 0.1);
+}
+
+.inventory-search::placeholder {
+  color: var(--tg-theme-hint-color);
+}
+
+.sort-btn {
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--tg-theme-text-color);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--tg-theme-link-color);
+}
+
+.sort-btn.active {
+  background: var(--tg-theme-link-color);
+  border-color: var(--tg-theme-link-color);
+}
+
 /* Responsive design */
 @media (max-width: 480px) {
   .main {
@@ -893,25 +1028,58 @@ body {
   }
 
   .inventory-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    padding: 20px 16px;
   }
 
   .inventory-item {
-    padding: 12px;
+    padding: 16px 12px;
+  }
+
+  .inventory-item img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .inventory-item .item-name {
+    font-size: 13px;
   }
 
   .action-btn {
-    padding: 4px 6px;
-    font-size: 9px;
+    padding: 8px 10px;
+    font-size: 10px;
   }
 
   .action-text {
-    font-size: 8px;
+    font-size: 9px;
   }
 
   .action-price {
-    font-size: 7px;
+    font-size: 8px;
+  }
+
+  .inventory-controls {
+    margin: 0 16px 16px;
+    padding: 16px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .inventory-search {
+    min-width: 100%;
+  }
+
+  .empty-inventory {
+    padding: 60px 20px;
+  }
+
+  .empty-icon {
+    font-size: 48px;
+  }
+
+  .empty-inventory p {
+    font-size: 16px;
   }
 }
 
@@ -938,4 +1106,41 @@ body {
 @keyframes hapticFeedback {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(0.98); }
+}
+
+/* Inventory item rarity indicators */
+.inventory-item.rare::before {
+  background: var(--gradient-rare);
+}
+
+.inventory-item.epic::before {
+  background: var(--gradient-epic);
+}
+
+.inventory-item.legendary::before {
+  background: var(--gradient-legendary);
+}
+
+/* Smooth scrolling for inventory */
+.inventory-grid {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced hover effects */
+.inventory-item:hover .item-actions {
+  transform: translateY(-2px);
+}
+
+.inventory-item .item-actions {
+  transition: transform 0.3s ease;
+}
+
+/* Better visual hierarchy */
+.inventory-item .item-value {
+  position: relative;
+  z-index: 2;
+}
+
+.inventory-item .item-count {
+  z-index: 3;
 }
