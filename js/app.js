@@ -10,8 +10,6 @@ class TelegramRouletteApp {
       totalSpins: 0,
       totalWins: 0
     };
-    this.sortOrder = 'name'; // 'name', 'value', 'count'
-    this.sortDirection = 'asc'; // 'asc', 'desc'
     
     // Roulette items for different costs with sell values
     this.rouletteItems = {
@@ -112,14 +110,6 @@ class TelegramRouletteApp {
         this.navigateToPage(page);
       });
     });
-
-    // Inventory search
-    const searchInput = document.getElementById('inventorySearch');
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        this.filterInventory(e.target.value);
-      });
-    }
 
     // Prevent context menu and text selection
     document.addEventListener('contextmenu', e => e.preventDefault());
@@ -421,83 +411,6 @@ class TelegramRouletteApp {
     this.hapticFeedback();
   }
 
-  toggleSort() {
-    // Cycle through sort options: name -> value -> count -> name
-    if (this.sortOrder === 'name') {
-      this.sortOrder = 'value';
-      this.sortDirection = 'desc';
-    } else if (this.sortOrder === 'value') {
-      this.sortOrder = 'count';
-      this.sortDirection = 'desc';
-    } else {
-      this.sortOrder = 'name';
-      this.sortDirection = 'asc';
-    }
-    
-    this.updateInventoryDisplay();
-    this.updateSortButton();
-    this.hapticFeedback();
-  }
-
-  updateSortButton() {
-    const sortBtn = document.getElementById('sortBtn');
-    if (sortBtn) {
-      const sortText = sortBtn.querySelector('span');
-      let text = 'Сортировка: ';
-      
-      switch (this.sortOrder) {
-        case 'name':
-          text += 'По имени';
-          break;
-        case 'value':
-          text += 'По цене';
-          break;
-        case 'count':
-          text += 'По количеству';
-          break;
-      }
-      
-      sortText.textContent = text;
-    }
-  }
-
-  filterInventory(searchTerm) {
-    const items = document.querySelectorAll('.inventory-item');
-    const lowerSearchTerm = searchTerm.toLowerCase();
-    
-    items.forEach(item => {
-      const itemName = item.querySelector('.item-name');
-      if (itemName) {
-        const name = itemName.textContent.toLowerCase();
-        if (name.includes(lowerSearchTerm)) {
-          item.style.display = 'flex';
-        } else {
-          item.style.display = 'none';
-        }
-      }
-    });
-  }
-
-  sortInventoryItems(items) {
-    return items.sort((a, b) => {
-      let comparison = 0;
-      
-      switch (this.sortOrder) {
-        case 'name':
-          comparison = a.name.localeCompare(b.name);
-          break;
-        case 'value':
-          comparison = a.sellPrice - b.sellPrice;
-          break;
-        case 'count':
-          comparison = a.count - b.count;
-          break;
-      }
-      
-      return this.sortDirection === 'asc' ? comparison : -comparison;
-    });
-  }
-
   updateInventoryDisplay() {
     const inventoryGrid = document.getElementById('inventoryGrid');
     
@@ -514,10 +427,7 @@ class TelegramRouletteApp {
 
     inventoryGrid.innerHTML = '';
     
-    // Sort items before displaying
-    const sortedItems = this.sortInventoryItems(Object.values(this.inventory));
-    
-    sortedItems.forEach(item => {
+    Object.values(this.inventory).forEach(item => {
       const sellPriceWithCommission = Math.floor(item.sellPrice * 0.86); // 14% commission
       
       const div = document.createElement('div');
@@ -541,8 +451,6 @@ class TelegramRouletteApp {
 
       inventoryGrid.appendChild(div);
     });
-    
-    this.updateSortButton();
   }
 
   showWinModal(item) {
@@ -592,11 +500,6 @@ class TelegramRouletteApp {
     // Update page-specific content
     if (page === 'inventory') {
       this.updateInventoryDisplay();
-      // Clear search when navigating to inventory
-      const searchInput = document.getElementById('inventorySearch');
-      if (searchInput) {
-        searchInput.value = '';
-      }
     } else if (page === 'profile') {
       this.updateProfileDisplay();
     }
@@ -681,9 +584,7 @@ class TelegramRouletteApp {
     const data = {
       balance: this.balance,
       inventory: this.inventory,
-      stats: this.stats,
-      sortOrder: this.sortOrder,
-      sortDirection: this.sortDirection
+      stats: this.stats
     };
     localStorage.setItem('telegramRouletteData', JSON.stringify(data));
   }
@@ -695,8 +596,6 @@ class TelegramRouletteApp {
       this.balance = data.balance || 1000;
       this.inventory = data.inventory || {};
       this.stats = data.stats || { totalSpins: 0, totalWins: 0 };
-      this.sortOrder = data.sortOrder || 'name';
-      this.sortDirection = data.sortDirection || 'asc';
     }
     this.updateUI();
     this.updateInventoryDisplay();
