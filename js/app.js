@@ -434,22 +434,18 @@ class TelegramRouletteApp {
       div.className = `inventory-item ${item.rarity || 'common'}`;
       
       div.innerHTML = `
-        <div class="item-showcase">
-          <div class="item-count">×${item.count}</div>
-          <img src="${item.img}" alt="${item.name}" loading="lazy">
-        </div>
-        <div class="item-info">
-          <div class="item-name">${item.name}</div>
-          <div class="item-value">${item.sellPrice} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon-small"></div>
-          <div class="item-actions">
-            <button class="action-btn sell-action-btn" onclick="app.sellInventoryItem('${item.name}')">
-              <span class="action-text">Продать</span>
-              <span class="action-price">${sellPriceWithCommission} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon-tiny"></span>
-            </button>
-            <button class="action-btn withdraw-action-btn" onclick="app.withdrawInventoryItem('${item.name}')">
-              <span class="action-text">Вывод</span>
-            </button>
-          </div>
+        <div class="item-count">×${item.count}</div>
+        <img src="${item.img}" alt="${item.name}" loading="lazy">
+        <div class="item-name">${item.name}</div>
+        <div class="item-value">${item.sellPrice} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon-small"></div>
+        <div class="item-actions">
+          <button class="action-btn sell-action-btn" onclick="app.sellInventoryItem('${item.name}')">
+            <span class="action-text">Продать</span>
+            <span class="action-price">${sellPriceWithCommission} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon-tiny"></span>
+          </button>
+          <button class="action-btn withdraw-action-btn" onclick="app.withdrawInventoryItem('${item.name}')">
+            <span class="action-text">Вывод</span>
+          </button>
         </div>
       `;
 
