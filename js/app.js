@@ -127,9 +127,9 @@ class TelegramRouletteApp {
     });
     document.querySelector(`[data-cost="${cost}"]`).classList.add('active');
 
-    // Update spin button with PNG currency
+    // Update spin button with currency emoji
     const spinCostElement = document.querySelector('.spin-cost');
-    spinCostElement.innerHTML = `${cost} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon">`;
+    spinCostElement.innerHTML = `${cost} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--lg">`;
 
     // Regenerate items and update chances
     this.generateRouletteItems();
@@ -252,7 +252,7 @@ class TelegramRouletteApp {
       spinBtn.disabled = false;
       spinBtn.innerHTML = `
         <span class="spin-text">Мне повезёт!</span>
-        <span class="spin-cost">${this.currentCost} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon"></span>
+        <span class="spin-cost">${this.currentCost} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--lg"></span>
       `;
       return;
     }
@@ -312,7 +312,7 @@ class TelegramRouletteApp {
     spinBtn.disabled = false;
     spinBtn.innerHTML = `
       <span class="spin-text">Мне повезёт!</span>
-      <span class="spin-cost">${this.currentCost} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon"></span>
+      <span class="spin-cost">${this.currentCost} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--lg"></span>
     `;
 
     this.isSpinning = false;
@@ -333,7 +333,7 @@ class TelegramRouletteApp {
 
     winItem.innerHTML = `<img src="${item.img}" alt="${item.name}">`;
     itemName.textContent = item.name;
-    sellPrice.innerHTML = `${item.sellPrice} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon">`;
+    sellPrice.innerHTML = `${item.sellPrice} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--sm">`;
 
     // Store current item for sell/keep actions
     this.currentWinItem = item;
@@ -437,11 +437,11 @@ class TelegramRouletteApp {
         <div class="item-count">×${item.count}</div>
         <img src="${item.img}" alt="${item.name}" loading="lazy">
         <div class="item-name">${item.name}</div>
-        <div class="item-value">${item.sellPrice} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon-small"></div>
+        <div class="item-value">${item.sellPrice} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--sm"></div>
         <div class="item-actions">
           <button class="action-btn sell-action-btn" onclick="app.sellInventoryItem('${item.name}')">
             <span class="action-text">Продать</span>
-            <span class="action-price">${sellPriceWithCommission} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon-tiny"></span>
+            <span class="action-price">${sellPriceWithCommission} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--xs"></span>
           </button>
           <button class="action-btn withdraw-action-btn" onclick="app.withdrawInventoryItem('${item.name}')">
             <span class="action-text">Вывод</span>
@@ -509,15 +509,15 @@ class TelegramRouletteApp {
     document.getElementById('totalSpins').textContent = this.stats.totalSpins;
     document.getElementById('totalWins').textContent = this.stats.totalWins;
     
-    // Update balance in profile stats with PNG currency
+    // Update balance in profile stats with currency emoji
     const balanceStatValue = document.querySelector('.stat-value');
     if (balanceStatValue) {
-      balanceStatValue.innerHTML = `${this.balance} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon">`;
+      balanceStatValue.innerHTML = `${this.balance} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--lg">`;
     }
   }
 
   updateUI() {
-    // Update balance with PNG currency
+    // Update balance with currency emoji
     const balanceAmount = document.querySelector('.balance-amount');
     balanceAmount.textContent = this.balance;
     
@@ -537,7 +537,7 @@ class TelegramRouletteApp {
     if (this.isDemoMode) {
       spinCostElement.textContent = '🆓';
     } else {
-      spinCostElement.innerHTML = `${this.currentCost} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon">`;
+      spinCostElement.innerHTML = `${this.currentCost} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--lg">`;
     }
   }
 

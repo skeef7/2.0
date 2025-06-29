@@ -49,7 +49,52 @@ body {
   position: relative;
 }
 
-/* Currency icons */
+/* Currency emoji component - customizable sizes */
+.currency-emoji {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 4px;
+  object-fit: contain;
+}
+
+/* Currency emoji size variants */
+.currency-emoji--xs {
+  width: 10px;
+  height: 10px;
+  margin-left: 2px;
+}
+
+.currency-emoji--sm {
+  width: 12px;
+  height: 12px;
+  margin-left: 2px;
+}
+
+.currency-emoji--md {
+  width: 14px;
+  height: 14px;
+  margin-left: 3px;
+}
+
+.currency-emoji--lg {
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+}
+
+.currency-emoji--xl {
+  width: 18px;
+  height: 18px;
+  margin-left: 4px;
+}
+
+.currency-emoji--xxl {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+}
+
+/* Legacy currency icons - kept for backward compatibility */
 .currency-icon {
   width: 16px;
   height: 16px;
