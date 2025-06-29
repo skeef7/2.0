@@ -16,6 +16,7 @@ class TelegramRouletteApp {
     // DISPLAY ITEMS - показываются на ленте рулетки
     this.displayItems = {
       25: [
+<<<<<<< HEAD
         { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 21.37, value: 10, sellPrice: 15, rarity: 'common' },
         { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 21.37, value: 25, sellPrice: 15, rarity: 'common' },
         { name: 'Box', img: 'IMG/case/Box.gif', chance: 25, value: 50, sellPrice: 25, rarity: 'rare' },
@@ -101,6 +102,45 @@ class TelegramRouletteApp {
         { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 20, value: 200, sellPrice: 100, rarity: 'legendary' },
         { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 10, value: 200, sellPrice: 50, rarity: 'epic' },
         { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 5, value: 200, sellPrice: 50, rarity: 'epic' }
+=======
+        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 25, value: 10, sellPrice: 15, rarity: 'common' },
+        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 25, value: 25, sellPrice: 30, rarity: 'common' },
+        { name: 'Box', img: 'IMG/case/Box.gif', chance: 30, value: 50, sellPrice: 40, rarity: 'rare' },
+        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 30, value: 100, sellPrice: 80, rarity: 'rare' },
+        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 0.806, value: 200, sellPrice: 150, rarity: 'epic' },
+        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200, sellPrice: 160, rarity: 'epic' },
+        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200, sellPrice: 140, rarity: 'epic' },
+        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200, sellPrice: 170, rarity: 'epic' },
+        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200, sellPrice: 130, rarity: 'epic' },
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 180, rarity: 'legendary' },
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200, sellPrice: 120, rarity: 'epic' }
+      ],
+      50: [
+        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 40, value: 25, sellPrice: 35, rarity: 'common' },
+        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 35, value: 50, sellPrice: 60, rarity: 'common' },
+        { name: 'Box', img: 'IMG/case/Box.gif', chance: 20, value: 100, sellPrice: 85, rarity: 'rare' },
+        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 5, value: 200, sellPrice: 170, rarity: 'rare' },
+        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 1, value: 400, sellPrice: 320, rarity: 'epic' },
+        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200, sellPrice: 180, rarity: 'epic' },
+        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200, sellPrice: 160, rarity: 'epic' },
+        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200, sellPrice: 190, rarity: 'epic' },
+        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200, sellPrice: 150, rarity: 'epic' },
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 200, rarity: 'legendary' },
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200, sellPrice: 140, rarity: 'epic' }
+      ],
+      100: [
+        { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 35, value: 50, sellPrice: 70, rarity: 'common' },
+        { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 30, value: 100, sellPrice: 120, rarity: 'common' },
+        { name: 'Box', img: 'IMG/case/Box.gif', chance: 25, value: 200, sellPrice: 170, rarity: 'rare' },
+        { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 10, value: 500, sellPrice: 400, rarity: 'rare' },
+        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 1, value: 700, sellPrice: 550, rarity: 'epic' },
+        { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 0.806, value: 200, sellPrice: 180, rarity: 'epic' },
+        { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 0.806, value: 200, sellPrice: 160, rarity: 'epic' },
+        { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 0.806, value: 200, sellPrice: 190, rarity: 'epic' },
+        { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200, sellPrice: 150, rarity: 'epic' },
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 200, rarity: 'legendary' },
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 0.806, value: 200, sellPrice: 140, rarity: 'epic' }
+>>>>>>> 1e5ab43aaf35deece61cf15c6c1008749e53f3bc
       ]
     };
 
@@ -516,6 +556,7 @@ class TelegramRouletteApp {
       
       div.innerHTML = `
         <div class="item-count">×${item.count}</div>
+<<<<<<< HEAD
         <div class="inventory-item-image">
           <img src="${item.img}" alt="${item.name}" loading="lazy">
         </div>
@@ -523,6 +564,11 @@ class TelegramRouletteApp {
           <div class="item-name">${item.name}</div>
           <div class="item-value">${item.sellPrice} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--sm"></div>
         </div>
+=======
+        <img src="${item.img}" alt="${item.name}" loading="lazy">
+        <div class="item-name">${item.name}</div>
+        <div class="item-value">${item.sellPrice} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--sm"></div>
+>>>>>>> 1e5ab43aaf35deece61cf15c6c1008749e53f3bc
         <div class="item-actions">
           <button class="action-btn sell-action-btn" onclick="app.sellInventoryItem('${item.name}')">
             <span class="action-text">Продать</span>
@@ -634,14 +680,28 @@ class TelegramRouletteApp {
     document.getElementById('totalSpins').textContent = this.stats.totalSpins;
     document.getElementById('totalWins').textContent = this.stats.totalWins;
     
+<<<<<<< HEAD
     // Update balance in profile - MOVED HERE FROM HEADER
     const profileBalanceElement = document.getElementById('profileBalance');
     if (profileBalanceElement) {
       profileBalanceElement.textContent = this.balance;
+=======
+    // Update balance in profile stats with currency emoji
+    const balanceStatValue = document.querySelector('.stat-value');
+    if (balanceStatValue) {
+      balanceStatValue.innerHTML = `${this.balance} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--lg">`;
+>>>>>>> 1e5ab43aaf35deece61cf15c6c1008749e53f3bc
     }
   }
 
   updateUI() {
+<<<<<<< HEAD
+=======
+    // Update balance with currency emoji
+    const balanceAmount = document.querySelector('.balance-amount');
+    balanceAmount.textContent = this.balance;
+    
+>>>>>>> 1e5ab43aaf35deece61cf15c6c1008749e53f3bc
     // Update spin button state
     const spinBtn = document.getElementById('spinBtn');
     if (!this.isDemoMode && this.balance < this.currentCost) {
@@ -659,11 +719,14 @@ class TelegramRouletteApp {
       spinCostElement.textContent = '🆓';
     } else {
       spinCostElement.innerHTML = `${this.currentCost} <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--lg">`;
+<<<<<<< HEAD
     }
 
     // Update profile balance if on profile page
     if (this.currentPage === 'profile') {
       this.updateProfileDisplay();
+=======
+>>>>>>> 1e5ab43aaf35deece61cf15c6c1008749e53f3bc
     }
   }
 
