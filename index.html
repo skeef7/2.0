@@ -9,29 +9,21 @@
 </head>
 <body>
   <div class="app">
-    <!-- Header with balance -->
-    <header class="header">
-      <div class="balance">
-        <span class="balance-amount">1000</span>
-        <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="balance-currency">
-      </div>
-    </header>
-
-    <!-- Main content -->
+    <!-- Main content without header -->
     <main class="main">
       <!-- Roulette type selector -->
       <div class="roulette-selector">
         <button class="roulette-btn active" data-cost="25">
           <span class="cost">25</span>
-          <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="gem">
+          <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--md">
         </button>
         <button class="roulette-btn" data-cost="50">
           <span class="cost">50</span>
-          <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="gem">
+          <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--md">
         </button>
         <button class="roulette-btn" data-cost="100">
           <span class="cost">100</span>
-          <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="gem">
+          <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--md">
         </button>
       </div>
 
@@ -55,14 +47,16 @@
       <!-- Spin button -->
       <button class="spin-btn" id="spinBtn">
         <span class="spin-text">Мне повезёт!</span>
-        <span class="spin-cost">25 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon"></span>
+        <span class="spin-cost">25 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--lg"></span>
       </button>
 
-      <!-- Chances display -->
+      <!-- Horizontal scrollable chances display -->
       <div class="chances">
         <h3 class="chances-title">Вы можете выиграть...</h3>
-        <div class="chances-list" id="chancesList">
-          <!-- Will be populated by JavaScript -->
+        <div class="chances-scroll-container">
+          <div class="chances-list" id="chancesList">
+            <!-- Will be populated by JavaScript -->
+          </div>
         </div>
       </div>
     </main>
@@ -97,10 +91,125 @@
       </header>
 
       <div class="inventory-grid" id="inventoryGrid">
-        <div class="empty-inventory">
-          <div class="empty-icon">📦</div>
-          <p>Ваш инвентарь пуст</p>
-          <p class="empty-subtitle">Крутите рулетку, чтобы получить призы!</p>
+        <!-- Compact inventory items -->
+        <div class="inventory-item rare">
+          <div class="item-count">×3</div>
+          <div class="inventory-item-image">
+            <img src="IMG/case/Heart.gif" alt="Heart" loading="lazy">
+          </div>
+          <div class="inventory-item-info">
+            <div class="item-name">Heart</div>
+            <div class="item-value">30 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--sm"></div>
+          </div>
+          <div class="item-actions">
+            <button class="action-btn sell-action-btn" onclick="app.sellInventoryItem('Heart')">
+              <span class="action-text">Продать</span>
+              <span class="action-price">26 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--xs"></span>
+            </button>
+            <button class="action-btn withdraw-action-btn" onclick="app.withdrawInventoryItem('Heart')">
+              <span class="action-text">Вывод</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="inventory-item epic">
+          <div class="item-count">×1</div>
+          <div class="inventory-item-image">
+            <img src="IMG/case/Ring.gif" alt="Ring" loading="lazy">
+          </div>
+          <div class="inventory-item-info">
+            <div class="item-name">Ring</div>
+            <div class="item-value">150 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--sm"></div>
+          </div>
+          <div class="item-actions">
+            <button class="action-btn sell-action-btn" onclick="app.sellInventoryItem('Ring')">
+              <span class="action-text">Продать</span>
+              <span class="action-price">129 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--xs"></span>
+            </button>
+            <button class="action-btn withdraw-action-btn" onclick="app.withdrawInventoryItem('Ring')">
+              <span class="action-text">Вывод</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="inventory-item legendary">
+          <div class="item-count">×1</div>
+          <div class="inventory-item-image">
+            <img src="IMG/case/Diamond.gif" alt="Diamond" loading="lazy">
+          </div>
+          <div class="inventory-item-info">
+            <div class="item-name">Diamond</div>
+            <div class="item-value">200 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--sm"></div>
+          </div>
+          <div class="item-actions">
+            <button class="action-btn sell-action-btn" onclick="app.sellInventoryItem('Diamond')">
+              <span class="action-text">Продать</span>
+              <span class="action-price">172 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--xs"></span>
+            </button>
+            <button class="action-btn withdraw-action-btn" onclick="app.withdrawInventoryItem('Diamond')">
+              <span class="action-text">Вывод</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="inventory-item common">
+          <div class="item-count">×5</div>
+          <div class="inventory-item-image">
+            <img src="IMG/case/Teddy.gif" alt="Teddy Bear" loading="lazy">
+          </div>
+          <div class="inventory-item-info">
+            <div class="item-name">Teddy Bear</div>
+            <div class="item-value">15 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--sm"></div>
+          </div>
+          <div class="item-actions">
+            <button class="action-btn sell-action-btn" onclick="app.sellInventoryItem('Teddy Bear')">
+              <span class="action-text">Продать</span>
+              <span class="action-price">13 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--xs"></span>
+            </button>
+            <button class="action-btn withdraw-action-btn" onclick="app.withdrawInventoryItem('Teddy Bear')">
+              <span class="action-text">Вывод</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="inventory-item rare">
+          <div class="item-count">×2</div>
+          <div class="inventory-item-image">
+            <img src="IMG/case/Rose.gif" alt="Rose" loading="lazy">
+          </div>
+          <div class="inventory-item-info">
+            <div class="item-name">Rose</div>
+            <div class="item-value">80 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--sm"></div>
+          </div>
+          <div class="item-actions">
+            <button class="action-btn sell-action-btn" onclick="app.sellInventoryItem('Rose')">
+              <span class="action-text">Продать</span>
+              <span class="action-price">69 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--xs"></span>
+            </button>
+            <button class="action-btn withdraw-action-btn" onclick="app.withdrawInventoryItem('Rose')">
+              <span class="action-text">Вывод</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="inventory-item epic">
+          <div class="item-count">×1</div>
+          <div class="inventory-item-image">
+            <img src="IMG/case/Rocket.gif" alt="Rocket" loading="lazy">
+          </div>
+          <div class="inventory-item-info">
+            <div class="item-name">Rocket</div>
+            <div class="item-value">160 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--sm"></div>
+          </div>
+          <div class="item-actions">
+            <button class="action-btn sell-action-btn" onclick="app.sellInventoryItem('Rocket')">
+              <span class="action-text">Продать</span>
+              <span class="action-price">138 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--xs"></span>
+            </button>
+            <button class="action-btn withdraw-action-btn" onclick="app.withdrawInventoryItem('Rocket')">
+              <span class="action-text">Вывод</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -112,16 +221,31 @@
         <h1>Профиль</h1>
       </header>
       <div class="profile-content">
+        <!-- Profile avatar and name -->
         <div class="profile-avatar">
           <div class="avatar-circle">👤</div>
         </div>
         <div class="profile-info">
           <h2 class="profile-name">Игрок</h2>
-          <div class="profile-stats">
-            <div class="stat">
-              <span class="stat-label">Баланс</span>
-              <span class="stat-value">1000 <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-icon"></span>
+          
+          <!-- Balance section - MOVED HERE WITH IN-GAME CURRENCY -->
+          <div class="profile-balance">
+            <div class="balance-card">
+              <div class="balance-icon">
+                <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="balance-currency-icon">
+              </div>
+              <div class="balance-info">
+                <div class="balance-label">Ваш баланс</div>
+                <div class="balance-amount-profile">
+                  <span id="profileBalance">1000</span>
+                  <img src="IMG/CryptoBotAssets_AgADQ14AAnJguEo.png" alt="star" class="currency-emoji currency-emoji--xxl">
+                </div>
+              </div>
             </div>
+          </div>
+          
+          <!-- Stats section -->
+          <div class="profile-stats">
             <div class="stat">
               <span class="stat-label">Всего прокруток</span>
               <span class="stat-value" id="totalSpins">0</span>

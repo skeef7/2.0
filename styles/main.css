@@ -21,9 +21,20 @@
   --gradient-rare: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
   --gradient-epic: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
   --gradient-legendary: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  --gradient-balance: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
   --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.3);
   --shadow-secondary: 0 4px 16px rgba(0, 0, 0, 0.2);
   --shadow-inventory: 0 6px 24px rgba(0, 0, 0, 0.25);
+  --shadow-glow: 0 0 20px rgba(106, 183, 255, 0.3);
+  --shadow-item: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-balance: 0 8px 32px rgba(255, 215, 0, 0.3);
+  
+  /* Readable inventory design variables */
+  --gradient-card-bg: linear-gradient(145deg, #2a3441 0%, #1e2832 100%);
+  --gradient-card-hover: linear-gradient(145deg, #3a4451 0%, #2e3842 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  --shadow-readable: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-readable-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -49,7 +60,56 @@ body {
   position: relative;
 }
 
-/* Currency icons */
+/* Currency emoji component - FIXED VERSION */
+.currency-emoji {
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;
+  flex-shrink: 0;
+  pointer-events: none;
+  transform: none !important;
+  transition: none !important;
+  position: static !important;
+}
+
+/* Currency emoji size variants - UPDATED SIZES */
+.currency-emoji--xs {
+  width: 14px !important;
+  height: 14px !important;
+  margin-left: 3px;
+}
+
+.currency-emoji--sm {
+  width: 14px !important;
+  height: 14px !important;
+  margin-left: 3px;
+}
+
+.currency-emoji--md {
+  width: 14px !important;
+  height: 14px !important;
+  margin-left: 3px;
+}
+
+.currency-emoji--lg {
+  width: 16px !important;
+  height: 16px !important;
+  margin-left: 4px;
+}
+
+.currency-emoji--xl {
+  width: 18px !important;
+  height: 18px !important;
+  margin-left: 4px;
+}
+
+.currency-emoji--xxl {
+  width: 20px !important;
+  height: 20px !important;
+  margin-left: 5px;
+}
+
+/* Legacy currency icons - kept for backward compatibility */
 .currency-icon {
   width: 16px;
   height: 16px;
@@ -84,36 +144,10 @@ body {
   height: 14px;
 }
 
-/* Header */
-.header {
-  padding: 20px 20px 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--tg-theme-header-bg-color);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.balance {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--tg-theme-section-bg-color);
-  padding: 12px 20px;
-  border-radius: 20px;
-  box-shadow: var(--shadow-secondary);
-}
-
-.balance-amount {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--tg-theme-text-color);
-}
-
-/* Main content */
+/* Main content - NO HEADER, FULL SCREEN WITH INCREASED TOP SPACING */
 .main {
   flex: 1;
-  padding: 20px;
+  padding: 70px 20px 20px; /* Увеличен верхний отступ с 50px до 70px */
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -164,12 +198,12 @@ body {
   font-weight: 700;
 }
 
-/* Roulette container */
+/* Roulette container - SIGNIFICANTLY ENHANCED FOR MUCH LARGER IMAGES */
 .roulette-container {
   position: relative;
   background: var(--tg-theme-section-bg-color);
   border-radius: 20px;
-  padding: 20px 0;
+  padding: 30px 0; /* Увеличен padding с 20px до 30px */
   box-shadow: var(--shadow-secondary);
   overflow: hidden;
 }
@@ -181,16 +215,16 @@ body {
   transform: translate(-50%, -50%);
   width: 0;
   height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 20px solid var(--tg-theme-link-color);
+  border-left: 18px solid transparent; /* Увеличен размер указателя */
+  border-right: 18px solid transparent;
+  border-top: 24px solid var(--tg-theme-link-color);
   z-index: 10;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.4));
 }
 
 .roulette-scope {
   overflow: hidden;
-  height: 120px;
+  height: 180px; /* ЗНАЧИТЕЛЬНО увеличена высота с 140px до 180px */
   position: relative;
 }
 
@@ -202,19 +236,21 @@ body {
   will-change: transform;
 }
 
+/* SIGNIFICANTLY ENHANCED ROULETTE ITEMS - MUCH LARGER IMAGES */
 .roulette-item {
   flex-shrink: 0;
-  width: 100px;
+  width: 130px; /* Увеличена ширина с 110px до 130px */
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 12px; /* Увеличен gap */
   background: rgba(255, 255, 255, 0.05);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   position: relative;
+  padding: 16px 10px; /* Увеличен padding */
 }
 
 .roulette-item:nth-child(even) {
@@ -223,28 +259,63 @@ body {
 
 .roulette-item.active {
   background: var(--gradient-success);
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(79, 172, 254, 0.5);
+  transform: scale(1.08); /* Увеличен scale эффект */
+  box-shadow: 0 0 25px rgba(79, 172, 254, 0.6);
   z-index: 5;
 }
 
+/* MUCH LARGER ROULETTE IMAGES */
 .roulette-item img {
-  width: 50px;
-  height: 50px;
+  width: 90px !important; /* ЗНАЧИТЕЛЬНО увеличено с 70px до 90px */
+  height: 90px !important; /* ЗНАЧИТЕЛЬНО увеличено с 70px до 90px */
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 16px; /* Увеличен border-radius */
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.roulette-item .item-name {
-  font-size: 10px;
-  font-weight: 500;
+.roulette-item:hover img {
+  transform: scale(1.1);
+}
+
+/* ENHANCED PRICE DISPLAY */
+.roulette-item .item-price {
+  font-size: 14px; /* Увеличен размер шрифта */
+  font-weight: 700;
   text-align: center;
-  color: var(--tg-theme-hint-color);
+  color: #ffd700;
+  background: rgba(0, 0, 0, 0.7); /* Более контрастный фон */
+  padding: 6px 10px; /* Увеличен padding */
+  border-radius: 10px; /* Увеличен border-radius */
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  min-width: 55px; /* Увеличена минимальная ширина */
+  justify-content: center;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.roulette-item.active .item-name {
-  color: var(--tg-theme-text-color);
-  font-weight: 600;
+.roulette-item.active .item-price {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  font-weight: 800;
+  transform: scale(1.05);
+}
+
+/* PRICE CURRENCY EMOJI IN ROULETTE */
+.roulette-item .item-price .currency-emoji {
+  width: 12px !important; /* Увеличен размер */
+  height: 12px !important;
+  margin-left: 3px !important;
+  transform: none !important;
+  transition: none !important;
+  flex-shrink: 0 !important;
+  pointer-events: none !important;
 }
 
 /* Demo toggle */
@@ -370,7 +441,7 @@ body {
   align-items: center;
 }
 
-/* Chances */
+/* 🎯 HORIZONTAL SCROLLABLE CHANCES - MOBILE OPTIMIZED */
 .chances {
   background: var(--tg-theme-section-bg-color);
   border-radius: 16px;
@@ -386,40 +457,123 @@ body {
   text-align: center;
 }
 
-.chances-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  gap: 12px;
+/* HORIZONTAL SCROLL CONTAINER - MOBILE OPTIMIZED */
+.chances-scroll-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  /* ВАЖНО: Убираем overflow: hidden для мобильных устройств */
 }
 
+.chances-list {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 0 16px 0; /* Добавляем нижний padding для скроллбара */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Включаем плавную прокрутку на iOS */
+  
+  /* МОБИЛЬНАЯ ПРОКРУТКА - показываем тонкий скроллбар */
+  scrollbar-width: thin; /* Firefox - тонкий скроллбар */
+  scrollbar-color: rgba(106, 183, 255, 0.5) transparent; /* Firefox - цвет скроллбара */
+}
+
+/* Стилизация скроллбара для WebKit (Chrome, Safari) */
+.chances-list::-webkit-scrollbar {
+  height: 4px; /* Тонкий горизонтальный скроллбар */
+}
+
+.chances-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.chances-list::-webkit-scrollbar-thumb {
+  background: rgba(106, 183, 255, 0.6);
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+
+.chances-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(106, 183, 255, 0.8);
+}
+
+/* HORIZONTAL CHANCE ITEMS */
 .chance-item {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  padding: 16px 8px;
+  padding: 16px 12px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   transition: all 0.3s ease;
+  min-width: 90px;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; /* Добавляем курсор для интерактивности */
 }
 
 .chance-item:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
+  border-color: rgba(106, 183, 255, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* RARITY BORDERS FOR CHANCE ITEMS */
+.chance-item[data-rarity="common"] {
+  border-color: rgba(169, 169, 169, 0.3);
+}
+
+.chance-item[data-rarity="rare"] {
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.chance-item[data-rarity="rare"]:hover {
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 0 12px rgba(255, 215, 0, 0.2);
+}
+
+.chance-item[data-rarity="epic"] {
+  border-color: rgba(155, 89, 182, 0.3);
+}
+
+.chance-item[data-rarity="epic"]:hover {
+  border-color: rgba(155, 89, 182, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 0 12px rgba(155, 89, 182, 0.2);
+}
+
+.chance-item[data-rarity="legendary"] {
+  border-color: rgba(231, 76, 60, 0.3);
+}
+
+.chance-item[data-rarity="legendary"]:hover {
+  border-color: rgba(231, 76, 60, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 0 12px rgba(231, 76, 60, 0.2);
 }
 
 .chance-item img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
-  border-radius: 6px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.chance-item:hover img {
+  transform: scale(1.1);
 }
 
 .chance-item .chance-name {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
   color: var(--tg-theme-text-color);
+  line-height: 1.2;
 }
 
 .chance-item .chance-percent {
@@ -428,6 +582,7 @@ body {
   display: flex;
   align-items: center;
   gap: 4px;
+  font-weight: 500;
 }
 
 /* Bottom navigation */
@@ -552,122 +707,124 @@ body {
   margin-right: 40px; /* Compensate for back button */
 }
 
-/* Inventory page - Enhanced with better layout */
+/* 📱 READABLE INVENTORY DESIGN - OPTIMAL USER EXPERIENCE */
 .inventory-grid {
-  padding: 24px 20px;
+  padding: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
+  gap: 16px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .inventory-item {
-  background: var(--tg-theme-section-bg-color);
-  border-radius: 20px;
-  padding: 0;
+  background: var(--gradient-card-bg);
+  border-radius: 16px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow-inventory);
-  transition: all 0.3s ease;
   position: relative;
-  border: 2px solid transparent;
   overflow: hidden;
-}
-
-.inventory-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-primary);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  min-height: 240px;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-readable);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .inventory-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+  background: var(--gradient-card-hover);
   border-color: rgba(106, 183, 255, 0.3);
+  box-shadow: var(--shadow-readable-hover);
 }
 
-.inventory-item:hover::before {
-  opacity: 1;
-}
-
-.item-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 16px 0;
-  position: relative;
-  z-index: 2;
-}
-
-.item-count {
-  font-size: 12px;
-  color: var(--tg-theme-text-color);
-  background: rgba(106, 183, 255, 0.2);
-  padding: 6px 12px;
+/* 🏷️ READABLE COUNT BADGE */
+.inventory-item .item-count {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
   border-radius: 12px;
-  font-weight: 600;
-  border: 1px solid rgba(106, 183, 255, 0.3);
+  font-size: 12px;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 4;
+  min-width: 24px;
+  text-align: center;
+  line-height: 1.2;
 }
 
-.item-value {
-  font-size: 12px;
-  color: var(--tg-theme-link-color);
+/* 🖼️ READABLE IMAGE SECTION */
+.inventory-item-image {
+  width: 100%;
+  padding: 8px;
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-weight: 600;
-  background: rgba(255, 215, 0, 0.1);
-  padding: 6px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 215, 0, 0.3);
-}
-
-.item-image {
-  display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px;
-  min-height: 120px;
-}
-
-.item-image img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
+  min-height: 80px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
-  transition: transform 0.3s ease;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.inventory-item:hover .item-image img {
+.inventory-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.inventory-item:hover img {
   transform: scale(1.1);
 }
 
-.item-info {
-  padding: 0 16px 16px;
+/* 📝 READABLE INFO SECTION */
+.inventory-item-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
-.item-name {
+.inventory-item .item-name {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
   color: var(--tg-theme-text-color);
-  line-height: 1.3;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
+.inventory-item .item-value {
+  background: rgba(106, 183, 255, 0.15);
+  color: #6ab7ff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid rgba(106, 183, 255, 0.3);
+  line-height: 1;
+}
+
+/* 🎮 READABLE ACTION BUTTONS */
 .item-actions {
   display: flex;
   gap: 8px;
+  margin-top: auto;
 }
 
 .action-btn {
@@ -676,100 +833,133 @@ body {
   border: none;
   border-radius: 12px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  position: relative;
-  overflow: hidden;
   min-height: 60px;
   justify-content: center;
-}
-
-.action-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-.action-btn:hover::before {
-  left: 100%;
-}
-
-.sell-btn {
-  background: var(--gradient-sell);
-  color: white;
-  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
-}
-
-.sell-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.5);
-}
-
-.withdraw-btn {
-  background: var(--gradient-primary);
-  color: white;
-  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
-}
-
-.withdraw-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.5);
-}
-
-.btn-icon {
-  font-size: 16px;
-  margin-bottom: 2px;
-}
-
-.btn-text {
-  font-size: 11px;
-  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.btn-price {
+.sell-action-btn {
+  background: var(--gradient-sell);
+  color: white;
+}
+
+.sell-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+}
+
+.withdraw-action-btn {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.withdraw-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.action-text {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.action-price {
   font-size: 10px;
-  opacity: 0.9;
-  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  opacity: 0.95;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2px 6px;
+  border-radius: 8px;
+  line-height: 1;
 }
 
+/* FIXED ACTION PRICE CURRENCY - READABLE SIZE */
+.action-price .currency-emoji {
+  width: 10px !important;
+  height: 10px !important;
+  margin-left: 2px !important;
+  transform: none !important;
+  transition: none !important;
+  flex-shrink: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 🌈 READABLE RARITY INDICATORS */
+.inventory-item.common {
+  border-color: rgba(169, 169, 169, 0.2);
+}
+
+.inventory-item.rare {
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.inventory-item.rare:hover {
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.inventory-item.epic {
+  border-color: rgba(155, 89, 182, 0.3);
+}
+
+.inventory-item.epic:hover {
+  border-color: rgba(155, 89, 182, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(155, 89, 182, 0.2);
+}
+
+.inventory-item.legendary {
+  border-color: rgba(231, 76, 60, 0.3);
+}
+
+.inventory-item.legendary:hover {
+  border-color: rgba(231, 76, 60, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(231, 76, 60, 0.2);
+}
+
+/* 📦 READABLE EMPTY INVENTORY */
 .empty-inventory {
   grid-column: 1 / -1;
   text-align: center;
-  padding: 80px 20px;
+  padding: 60px 20px;
   color: var(--tg-theme-hint-color);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  border: 2px dashed rgba(255, 255, 255, 0.1);
 }
 
 .empty-icon {
-  font-size: 64px;
-  margin-bottom: 24px;
+  font-size: 48px;
+  margin-bottom: 16px;
   opacity: 0.6;
 }
 
 .empty-inventory p {
-  font-size: 18px;
-  margin-bottom: 12px;
+  font-size: 16px;
+  margin-bottom: 8px;
   font-weight: 500;
 }
 
 .empty-subtitle {
   font-size: 14px;
   opacity: 0.7;
-  line-height: 1.4;
 }
 
-/* Profile page */
+/* 👤 PROFILE PAGE - ENHANCED WITH BALANCE SECTION AND IN-GAME CURRENCY */
 .profile-content {
   padding: 40px 20px;
   display: flex;
@@ -793,6 +983,31 @@ body {
   justify-content: center;
   font-size: 32px;
   box-shadow: var(--shadow-primary);
+  overflow: hidden;
+  position: relative;
+}
+
+/* 📸 TELEGRAM AVATAR IMAGE STYLES */
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  transition: transform 0.3s ease;
+}
+
+.avatar-image:hover {
+  transform: scale(1.05);
+}
+
+/* 🎨 AVATAR FALLBACK STYLES */
+.avatar-circle:not(:has(.avatar-image)) {
+  background: var(--gradient-primary);
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
 }
 
 .profile-info {
@@ -805,12 +1020,114 @@ body {
   font-weight: 600;
   color: var(--tg-theme-text-color);
   margin-bottom: 24px;
+  word-break: break-word;
+  line-height: 1.3;
 }
 
+/* 💰 PROFILE BALANCE SECTION - WITH IN-GAME CURRENCY ICON */
+.profile-balance {
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+.balance-card {
+  background: var(--gradient-balance);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-balance);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.balance-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.balance-card:hover::before {
+  left: 100%;
+}
+
+.balance-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(255, 215, 0, 0.4);
+}
+
+/* IN-GAME CURRENCY ICON IN BALANCE */
+.balance-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.balance-currency-icon {
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(100%);
+  transform: none !important;
+  transition: none !important;
+  pointer-events: none !important;
+}
+
+.balance-info {
+  flex: 1;
+  text-align: left;
+}
+
+.balance-label {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.balance-amount-profile {
+  font-size: 28px;
+  font-weight: 800;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+}
+
+/* PROFILE BALANCE CURRENCY EMOJI */
+.balance-amount-profile .currency-emoji {
+  width: 24px !important;
+  height: 24px !important;
+  margin-left: 6px !important;
+  transform: none !important;
+  transition: none !important;
+  flex-shrink: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Stats section */
 .profile-stats {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
 }
 
 .stat {
@@ -963,10 +1280,20 @@ body {
   font-size: 14px;
 }
 
-/* Responsive design */
+/* SPECIAL OVERRIDE FOR SELL PRICE MODAL - 14PX STAR */
+#sellPrice .currency-emoji {
+  width: 14px !important;
+  height: 14px !important;
+  margin-left: 3px !important;
+  transform: none !important;
+  transition: none !important;
+  pointer-events: none !important;
+}
+
+/* 📱 RESPONSIVE DESIGN - MOBILE OPTIMIZED FOR LARGER ROULETTE */
 @media (max-width: 480px) {
   .main {
-    padding: 16px;
+    padding: 60px 16px 16px; /* Увеличен верхний отступ и для мобильных */
     gap: 20px;
   }
   
@@ -979,9 +1306,99 @@ body {
     font-size: 14px;
   }
   
+  /* MOBILE ROULETTE ADJUSTMENTS - STILL LARGE BUT OPTIMIZED */
+  .roulette-container {
+    padding: 20px 0; /* Немного меньше padding на мобильных */
+  }
+  
+  .roulette-pointer {
+    border-left: 15px solid transparent; /* Немного меньше указатель */
+    border-right: 15px solid transparent;
+    border-top: 20px solid var(--tg-theme-link-color);
+  }
+  
+  .roulette-scope {
+    height: 150px; /* Немного меньше на мобильных, но все еще большая */
+  }
+  
+  .roulette-item {
+    width: 110px; /* Немного уже на мобильных */
+    padding: 12px 8px;
+  }
+  
+  .roulette-item img {
+    width: 75px !important; /* Немного меньше на мобильных, но все еще крупные */
+    height: 75px !important;
+  }
+  
+  .roulette-item .item-price {
+    font-size: 12px;
+    padding: 5px 8px;
+    min-width: 50px;
+  }
+  
+  .roulette-item .item-price .currency-emoji {
+    width: 10px !important;
+    height: 10px !important;
+    margin-left: 2px !important;
+  }
+  
+  /* 📱 MOBILE HORIZONTAL CHANCES - OPTIMIZED FOR TOUCH SCROLLING */
+  .chances {
+    padding: 16px;
+  }
+  
+  .chances-title {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+  
+  .chances-scroll-container {
+    /* Убираем overflow: hidden на мобильных для лучшей прокрутки */
+    overflow: visible;
+  }
+  
   .chances-list {
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-    gap: 8px;
+    gap: 10px;
+    padding: 6px 0 12px 0; /* Увеличиваем нижний padding для скроллбара */
+    
+    /* МОБИЛЬНАЯ ПРОКРУТКА - более заметный скроллбар */
+    scrollbar-width: auto; /* Firefox - обычный скроллбар на мобильных */
+  }
+  
+  /* Более заметный скроллбар на мобильных */
+  .chances-list::-webkit-scrollbar {
+    height: 6px; /* Увеличиваем высоту скроллбара на мобильных */
+  }
+  
+  .chances-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+  }
+  
+  .chances-list::-webkit-scrollbar-thumb {
+    background: rgba(106, 183, 255, 0.8);
+    border-radius: 3px;
+  }
+  
+  .chance-item {
+    min-width: 75px;
+    padding: 12px 8px;
+    /* Добавляем touch-action для лучшей прокрутки */
+    touch-action: manipulation;
+  }
+  
+  .chance-item img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .chance-item .chance-name {
+    font-size: 11px;
+  }
+  
+  .chance-item .chance-percent {
+    font-size: 10px;
   }
   
   .bottom-nav {
@@ -990,64 +1407,137 @@ body {
 
   .inventory-grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 16px;
-    padding: 20px 16px;
+    gap: 12px;
+    padding: 16px;
   }
 
   .inventory-item {
-    border-radius: 16px;
+    min-height: 220px;
+    padding: 12px;
+    border-radius: 14px;
   }
 
-  .item-header {
-    padding: 12px 12px 0;
+  .inventory-item img {
+    width: 56px;
+    height: 56px;
   }
 
-  .item-image {
-    padding: 16px;
-    min-height: 100px;
-  }
-
-  .item-image img {
-    width: 64px;
-    height: 64px;
-  }
-
-  .item-info {
-    padding: 0 12px 12px;
-    gap: 12px;
-  }
-
-  .item-name {
+  .inventory-item .item-name {
     font-size: 14px;
+  }
+
+  .inventory-item .item-value {
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 10px;
   }
 
   .action-btn {
     padding: 10px 6px;
-    min-height: 50px;
+    font-size: 11px;
+    min-height: 55px;
+    border-radius: 10px;
   }
 
-  .btn-icon {
-    font-size: 14px;
-  }
-
-  .btn-text {
+  .action-text {
     font-size: 10px;
   }
 
-  .btn-price {
+  .action-price {
     font-size: 9px;
+    padding: 2px 5px;
+    border-radius: 6px;
+  }
+
+  .action-price .currency-emoji {
+    width: 8px !important;
+    height: 8px !important;
+    margin-left: 1px !important;
+  }
+
+  .inventory-item .item-count {
+    top: 8px;
+    right: 8px;
+    padding: 3px 6px;
+    font-size: 11px;
+    border-radius: 10px;
+    min-width: 20px;
   }
 
   .empty-inventory {
-    padding: 60px 20px;
+    padding: 40px 16px;
   }
 
   .empty-icon {
-    font-size: 48px;
+    font-size: 36px;
   }
 
   .empty-inventory p {
-    font-size: 16px;
+    font-size: 14px;
+  }
+
+  .empty-subtitle {
+    font-size: 12px;
+  }
+
+  /* 📱 MOBILE PROFILE STYLES */
+  .profile-content {
+    padding: 30px 16px;
+    gap: 20px;
+  }
+
+  .avatar-circle {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+  }
+
+  .profile-name {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* MOBILE BALANCE CARD */
+  .balance-card {
+    padding: 20px;
+    gap: 12px;
+  }
+
+  .balance-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .balance-currency-icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .balance-label {
+    font-size: 12px;
+  }
+
+  .balance-amount-profile {
+    font-size: 24px;
+    gap: 6px;
+  }
+
+  .balance-amount-profile .currency-emoji {
+    width: 20px !important;
+    height: 20px !important;
+    margin-left: 4px !important;
+  }
+
+  .stat {
+    padding: 14px 16px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+  }
+
+  .stat-value {
+    font-size: 15px;
   }
 }
 
@@ -1076,39 +1566,7 @@ body {
   50% { transform: scale(0.98); }
 }
 
-/* Inventory item rarity indicators */
-.inventory-item.rare::before {
-  background: var(--gradient-rare);
-}
-
-.inventory-item.epic::before {
-  background: var(--gradient-epic);
-}
-
-.inventory-item.legendary::before {
-  background: var(--gradient-legendary);
-}
-
 /* Smooth scrolling for inventory */
 .inventory-grid {
   scroll-behavior: smooth;
-}
-
-/* Enhanced hover effects */
-.inventory-item:hover .item-actions {
-  transform: translateY(-2px);
-}
-
-.inventory-item .item-actions {
-  transition: transform 0.3s ease;
-}
-
-/* Better visual hierarchy */
-.inventory-item .item-value {
-  position: relative;
-  z-index: 2;
-}
-
-.inventory-item .item-count {
-  z-index: 3;
 }
