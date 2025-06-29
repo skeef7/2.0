@@ -67,8 +67,8 @@ body {
 }
 
 .currency-icon-tiny {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   display: inline-block;
   vertical-align: middle;
   margin-left: 2px;
@@ -556,7 +556,7 @@ body {
 .inventory-grid {
   padding: 24px 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 16px;
   max-width: 1200px;
   margin: 0 auto;
@@ -565,11 +565,11 @@ body {
 .inventory-item {
   background: var(--tg-theme-section-bg-color);
   border-radius: 16px;
-  padding: 20px 16px;
+  padding: 20px 16px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   box-shadow: var(--shadow-inventory);
   transition: all 0.3s ease;
   position: relative;
@@ -600,12 +600,12 @@ body {
 }
 
 .inventory-item img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.05);
-  padding: 12px;
+  padding: 8px;
   transition: transform 0.3s ease;
 }
 
@@ -614,7 +614,7 @@ body {
 }
 
 .inventory-item .item-name {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   text-align: center;
   color: var(--tg-theme-text-color);
@@ -626,7 +626,7 @@ body {
   font-size: 12px;
   color: var(--tg-theme-hint-color);
   background: rgba(255, 255, 255, 0.1);
-  padding: 4px 12px;
+  padding: 4px 10px;
   border-radius: 12px;
   font-weight: 500;
   position: absolute;
@@ -637,39 +637,41 @@ body {
 }
 
 .inventory-item .item-value {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--tg-theme-link-color);
   display: flex;
   align-items: center;
   gap: 4px;
   font-weight: 600;
   background: rgba(106, 183, 255, 0.1);
-  padding: 8px 16px;
-  border-radius: 12px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  margin-bottom: 8px;
 }
 
 .item-actions {
   display: flex;
-  gap: 4px;
+  gap: 8px;
   width: 100%;
-  margin-top: 4px;
 }
 
 .action-btn {
   flex: 1;
-  padding: 6px 8px;
+  padding: 12px 8px;
   border: none;
-  border-radius: 8px;
-  font-size: 9px;
+  border-radius: 10px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1px;
+  gap: 4px;
   position: relative;
   overflow: hidden;
+  min-height: 60px;
+  justify-content: center;
 }
 
 .action-btn::before {
@@ -710,19 +712,21 @@ body {
 }
 
 .action-text {
-  font-size: 8px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  margin-bottom: 2px;
 }
 
 .action-price {
-  font-size: 7px;
+  font-size: 10px;
   display: flex;
   align-items: center;
-  gap: 1px;
+  gap: 2px;
   opacity: 0.9;
   line-height: 1;
+  font-weight: 600;
 }
 
 .empty-inventory {
@@ -970,35 +974,36 @@ body {
   }
 
   .inventory-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 12px;
     padding: 20px 16px;
   }
 
   .inventory-item {
-    padding: 16px 12px;
+    padding: 16px 12px 12px;
   }
 
   .inventory-item img {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
   }
 
   .inventory-item .item-name {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .action-btn {
-    padding: 5px 6px;
-    font-size: 8px;
+    padding: 10px 6px;
+    font-size: 11px;
+    min-height: 55px;
   }
 
   .action-text {
-    font-size: 7px;
+    font-size: 10px;
   }
 
   .action-price {
-    font-size: 6px;
+    font-size: 9px;
   }
 
   .empty-inventory {
