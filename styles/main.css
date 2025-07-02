@@ -60,39 +60,6 @@ body {
   position: relative;
 }
 
-/* Header with balance */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: var(--tg-theme-header-bg-color);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 16px 20px;
-  z-index: 100;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.balance {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--gradient-balance);
-  padding: 12px 20px;
-  border-radius: 16px;
-  box-shadow: var(--shadow-balance);
-  border: 2px solid rgba(255, 215, 0, 0.3);
-}
-
-.balance-amount {
-  font-size: 20px;
-  font-weight: 800;
-  color: #000;
-  line-height: 1;
-}
-
 /* Currency emoji component - FIXED VERSION */
 .currency-emoji {
   display: inline-block;
@@ -177,10 +144,10 @@ body {
   height: 14px;
 }
 
-/* Main content - WITH HEADER, PROPER TOP SPACING */
+/* Main content - WITH TOP SPACING */
 .main {
   flex: 1;
-  padding: 70px 20px 20px; /* Увеличен верхний отступ с 50px до 70px */
+  padding: 60px 20px 20px; /* Добавлено пустое пространство сверху */
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -1329,7 +1296,7 @@ body {
 /* 📱 RESPONSIVE DESIGN - MOBILE OPTIMIZED FOR LARGER ROULETTE */
 @media (max-width: 480px) {
   .main {
-    padding: 60px 16px 16px; /* Увеличен верхний отступ и для мобильных */
+    padding: 50px 16px 16px; /* Добавлено пустое пространство сверху для мобильных */
     gap: 20px;
   }
   
