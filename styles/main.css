@@ -151,7 +151,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding-bottom: 100px;
+  padding-bottom: 120px; /* Увеличен нижний отступ для видимости секции шансов */
 }
 
 /* Roulette selector */
@@ -1298,6 +1298,7 @@ body {
   .main {
     padding: 50px 16px 16px; /* Добавлено пустое пространство сверху для мобильных */
     gap: 20px;
+    padding-bottom: 140px; /* Увеличен нижний отступ для мобильных */
   }
   
   .roulette-selector {
