@@ -164,6 +164,13 @@ class TelegramRouletteApp {
       });
     });
 
+    // Back buttons
+    document.querySelectorAll('.back-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.navigateToPage('roulette');
+      });
+    });
+
     // Prevent context menu and text selection
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('selectstart', e => e.preventDefault());
@@ -642,10 +649,6 @@ class TelegramRouletteApp {
   }
 
   updateUI() {
-    // Update balance with currency emoji
-    const balanceAmount = document.querySelector('.balance-amount');
-    balanceAmount.textContent = this.balance;
-    
     // Update spin button state
     const spinBtn = document.getElementById('spinBtn');
     if (!this.isDemoMode && this.balance < this.currentCost) {
