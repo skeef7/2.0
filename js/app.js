@@ -14,51 +14,66 @@ class TelegramRouletteApp {
     
     // Roulette items for different costs with sell values
     // DISPLAY ITEMS - показываются на ленте рулетки
+    // ОРГАНИЗОВАНЫ ПО РЕДКОСТИ ДЛЯ СИММЕТРИЧНОГО ОТОБРАЖЕНИЯ
     this.displayItems = {
       25: [
+        // Common items (first)
         { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 21.37, value: 10, sellPrice: 15, rarity: 'common' },
         { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 21.37, value: 25, sellPrice: 15, rarity: 'common' },
+        
+        // Rare items (middle)
         { name: 'Box', img: 'IMG/case/Box.gif', chance: 25, value: 50, sellPrice: 25, rarity: 'rare' },
         { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 25, value: 100, sellPrice: 25, rarity: 'rare' },
+        
+        // Epic items (grouped together)
         { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 0.806, value: 200, sellPrice: 100, rarity: 'epic' },
         { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 1.21, value: 200, sellPrice: 50, rarity: 'epic' },
         { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 1.21, value: 200, sellPrice: 50, rarity: 'epic' },
         { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 1.21, value: 200, sellPrice: 50, rarity: 'epic' },
         { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 0.806, value: 200, sellPrice: 100, rarity: 'epic' },
-        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 100, rarity: 'legendary' },
-        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 1.21, value: 200, sellPrice: 50, rarity: 'epic' }
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 1.21, value: 200, sellPrice: 50, rarity: 'epic' },
+        
+        // Legendary items (last)
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 0.806, value: 200, sellPrice: 100, rarity: 'legendary' }
       ],
       50: [
+        // Common items (first)
         { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 6.97, value: 25, sellPrice: 15, rarity: 'common' },
         { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 6.97, value: 50, sellPrice: 15, rarity: 'common' },
+        
+        // Rare items (middle)
         { name: 'Box', img: 'IMG/case/Box.gif', chance: 11.61, value: 100, sellPrice: 25, rarity: 'rare' },
         { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 11.61, value: 200, sellPrice: 25, rarity: 'rare' },
+        
+        // Epic items (grouped together)
         { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 5.46, value: 400, sellPrice: 100, rarity: 'epic' },
         { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 11.61, value: 200, sellPrice: 50, rarity: 'epic' },
         { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 11.61, value: 200, sellPrice: 50, rarity: 'epic' },
         { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 11.61, value: 200, sellPrice: 50, rarity: 'epic' },
         { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 5.46, value: 200, sellPrice: 100, rarity: 'epic' },
-        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 5.46, value: 200, sellPrice: 100, rarity: 'legendary' },
-        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 11.61, value: 200, sellPrice: 50, rarity: 'epic' }
+        { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 11.61, value: 200, sellPrice: 50, rarity: 'epic' },
+        
+        // Legendary items (last)
+        { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 5.46, value: 200, sellPrice: 100, rarity: 'legendary' }
       ],
       100: [
-        // Common (суммарно 10% вместо ~14% в 50)
+        // Common items (first)
         { name: 'Teddy Bear', img: 'IMG/case/Teddy.gif', chance: 5, value: 50, sellPrice: 15, rarity: 'common' },
         { name: 'Heart', img: 'IMG/case/Heart.gif', chance: 5, value: 100, sellPrice: 15, rarity: 'common' },
 
-        // Rare (суммарно 20% вместо ~23% в 50)
+        // Rare items (middle)
         { name: 'Box', img: 'IMG/case/Box.gif', chance: 10, value: 200, sellPrice: 25, rarity: 'rare' },
         { name: 'Rose', img: 'IMG/case/Rose.gif', chance: 10, value: 500, sellPrice: 25, rarity: 'rare' },
 
-        // Epic (значительно усилены)
-        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 8, value: 700, sellPrice: 100, rarity: 'epic' }, // Дорогой предмет
+        // Epic items (grouped together)
+        { name: 'Ring', img: 'IMG/case/Ring.gif', chance: 8, value: 700, sellPrice: 100, rarity: 'epic' },
         { name: 'Rocket', img: 'IMG/case/Rocket.gif', chance: 12, value: 200, sellPrice: 50, rarity: 'epic' },
         { name: 'Сake', img: 'IMG/case/Сake.gif', chance: 12, value: 200, sellPrice: 50, rarity: 'epic' },
         { name: 'Сhampagne', img: 'IMG/case/Сhampagne.gif', chance: 12, value: 200, sellPrice: 50, rarity: 'epic' },
         { name: 'Сup', img: 'IMG/case/Сup.gif', chance: 8, value: 200, sellPrice: 100, rarity: 'epic' },
         { name: 'Flowers', img: 'IMG/case/Flowers.gif', chance: 12, value: 200, sellPrice: 50, rarity: 'epic' },
 
-        // Legendary (увеличен в 2 раза относительно 50)
+        // Legendary items (last)
         { name: 'Diamond', img: 'IMG/case/Diamond.gif', chance: 6, value: 200, sellPrice: 100, rarity: 'legendary' }
       ]
     };
@@ -274,10 +289,16 @@ class TelegramRouletteApp {
     const chancesList = document.getElementById('chancesList');
     chancesList.innerHTML = '';
 
-    // ПОКАЗЫВАЕМ ШАНСЫ ДЛЯ DISPLAY ITEMS (все призы)
+    // ПОКАЗЫВАЕМ ШАНСЫ ДЛЯ DISPLAY ITEMS (все призы) В ОРГАНИЗОВАННОМ ПОРЯДКЕ
     const items = this.displayItems[this.currentCost];
     
-    items.forEach(item => {
+    // СОРТИРУЕМ ПО РЕДКОСТИ ДЛЯ СИММЕТРИЧНОГО ОТОБРАЖЕНИЯ
+    const sortedItems = [...items].sort((a, b) => {
+      const rarityOrder = { 'common': 1, 'rare': 2, 'epic': 3, 'legendary': 4 };
+      return rarityOrder[a.rarity] - rarityOrder[b.rarity];
+    });
+    
+    sortedItems.forEach(item => {
       const div = document.createElement('div');
       div.className = 'chance-item';
       div.setAttribute('data-rarity', item.rarity);

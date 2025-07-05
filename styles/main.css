@@ -441,7 +441,7 @@ body {
   align-items: center;
 }
 
-/* 🎯 HORIZONTAL SCROLLABLE CHANCES - MOBILE OPTIMIZED */
+/* 🎯 DESKTOP OPTIMIZED CHANCES - SYMMETRICAL GRID LAYOUT */
 .chances {
   background: var(--tg-theme-section-bg-color);
   border-radius: 16px;
@@ -457,31 +457,68 @@ body {
   text-align: center;
 }
 
-/* HORIZONTAL SCROLL CONTAINER - MOBILE OPTIMIZED */
+/* DESKTOP GRID CONTAINER - SYMMETRICAL LAYOUT */
 .chances-scroll-container {
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  /* ВАЖНО: Убираем overflow: hidden для мобильных устройств */
 }
 
+/* DESKTOP GRID LAYOUT - ORGANIZED BY RARITY */
 .chances-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   gap: 12px;
+  padding: 8px 0;
+  max-width: 100%;
+  justify-items: center;
+  
+  /* FALLBACK FOR MOBILE - HORIZONTAL SCROLL */
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 8px 0 16px 0; /* Добавляем нижний padding для скроллбара */
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch; /* Включаем плавную прокрутку на iOS */
-  
-  /* МОБИЛЬНАЯ ПРОКРУТКА - показываем тонкий скроллбар */
-  scrollbar-width: thin; /* Firefox - тонкий скроллбар */
-  scrollbar-color: rgba(106, 183, 255, 0.5) transparent; /* Firefox - цвет скроллбара */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(106, 183, 255, 0.5) transparent;
 }
 
-/* Стилизация скроллбара для WebKit (Chrome, Safari) */
+/* DESKTOP MEDIA QUERY - PERFECT GRID LAYOUT */
+@media (min-width: 768px) {
+  .chances-list {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr); /* 11 columns for 11 items */
+    gap: 8px;
+    overflow: visible;
+    padding: 8px;
+    justify-items: center;
+    align-items: start;
+  }
+  
+  .chances-scroll-container {
+    overflow: visible;
+  }
+  
+  .chance-item {
+    width: 100%;
+    max-width: 85px;
+  }
+}
+
+/* LARGE DESKTOP - EVEN MORE SPACE */
+@media (min-width: 1200px) {
+  .chances-list {
+    gap: 12px;
+    padding: 12px;
+  }
+  
+  .chance-item {
+    max-width: 95px;
+  }
+}
+
+/* Стилизация скроллбара для WebKit (Chrome, Safari) - MOBILE FALLBACK */
 .chances-list::-webkit-scrollbar {
-  height: 4px; /* Тонкий горизонтальный скроллбар */
+  height: 4px;
 }
 
 .chances-list::-webkit-scrollbar-track {
@@ -499,7 +536,7 @@ body {
   background: rgba(106, 183, 255, 0.8);
 }
 
-/* HORIZONTAL CHANCE ITEMS */
+/* SYMMETRICAL CHANCE ITEMS */
 .chance-item {
   flex-shrink: 0;
   display: flex;
@@ -514,7 +551,7 @@ body {
   border: 2px solid transparent;
   position: relative;
   overflow: hidden;
-  cursor: pointer; /* Добавляем курсор для интерактивности */
+  cursor: pointer;
 }
 
 .chance-item:hover {
@@ -1347,7 +1384,7 @@ body {
     margin-left: 2px !important;
   }
   
-  /* 📱 MOBILE HORIZONTAL CHANCES - OPTIMIZED FOR TOUCH SCROLLING */
+  /* 📱 MOBILE HORIZONTAL CHANCES - FALLBACK TO HORIZONTAL SCROLL */
   .chances {
     padding: 16px;
   }
@@ -1358,21 +1395,22 @@ body {
   }
   
   .chances-scroll-container {
-    /* Убираем overflow: hidden на мобильных для лучшей прокрутки */
     overflow: visible;
   }
   
   .chances-list {
+    display: flex !important; /* Force horizontal layout on mobile */
+    grid-template-columns: none !important;
     gap: 10px;
-    padding: 6px 0 12px 0; /* Увеличиваем нижний padding для скроллбара */
-    
-    /* МОБИЛЬНАЯ ПРОКРУТКА - более заметный скроллбар */
-    scrollbar-width: auto; /* Firefox - обычный скроллбар на мобильных */
+    padding: 6px 0 12px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: auto;
   }
   
   /* Более заметный скроллбар на мобильных */
   .chances-list::-webkit-scrollbar {
-    height: 6px; /* Увеличиваем высоту скроллбара на мобильных */
+    height: 6px;
   }
   
   .chances-list::-webkit-scrollbar-track {
@@ -1388,7 +1426,6 @@ body {
   .chance-item {
     min-width: 75px;
     padding: 12px 8px;
-    /* Добавляем touch-action для лучшей прокрутки */
     touch-action: manipulation;
   }
   
