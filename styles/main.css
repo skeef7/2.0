@@ -449,12 +449,53 @@ body {
   box-shadow: var(--shadow-secondary);
 }
 
+/* CHANCES HEADER WITH SALE BADGE */
+.chances-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
 .chances-title {
   font-size: 16px;
   font-weight: 600;
   color: var(--tg-theme-text-color);
-  margin-bottom: 16px;
   text-align: center;
+  margin: 0;
+}
+
+/* SMALL SALE BADGE - STYLED LIKE TELEGRAM PREMIUM */
+.sale-badge {
+  background: #00c851;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 200, 81, 0.3);
+  animation: salePulse 2s infinite;
+  white-space: nowrap;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20px;
+}
+
+@keyframes salePulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(0, 200, 81, 0.3);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 200, 81, 0.5);
+  }
 }
 
 /* HORIZONTAL SCROLL CONTAINER - MOBILE OPTIMIZED */
@@ -1352,9 +1393,21 @@ body {
     padding: 16px;
   }
   
+  /* MOBILE CHANCES HEADER */
+  .chances-header {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  
   .chances-title {
     font-size: 15px;
-    margin-bottom: 12px;
+  }
+  
+  .sale-badge {
+    font-size: 10px;
+    padding: 3px 6px;
+    border-radius: 6px;
+    min-height: 18px;
   }
   
   .chances-scroll-container {
