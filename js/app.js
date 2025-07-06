@@ -129,6 +129,7 @@ class TelegramRouletteApp {
     this.updateChancesList();
     this.updateUI();
     this.loadData();
+    this.updateBannerVisibility();
   }
 
   initTelegram() {
@@ -610,11 +611,25 @@ class TelegramRouletteApp {
     this.currentPage = page;
     this.hapticFeedback();
 
+    // Update banner visibility
+    this.updateBannerVisibility();
+
     // Update page-specific content
     if (page === 'inventory') {
       this.updateInventoryDisplay();
     } else if (page === 'profile') {
       this.updateProfileDisplay();
+    }
+  }
+
+  updateBannerVisibility() {
+    const banner = document.querySelector('.top-banner');
+    if (banner) {
+      if (this.currentPage === 'roulette') {
+        banner.style.display = 'block';
+      } else {
+        banner.style.display = 'none';
+      }
     }
   }
 
