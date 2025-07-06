@@ -22,14 +22,14 @@
   --gradient-epic: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
   --gradient-legendary: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
   --gradient-balance: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
-  --gradient-banner: linear-gradient(135deg, rgba(0, 200, 81, 0.15) 0%, rgba(0, 168, 67, 0.15) 100%);
+  --gradient-banner: linear-gradient(135deg, #00c851 0%, #00a843 100%);
   --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.3);
   --shadow-secondary: 0 4px 16px rgba(0, 0, 0, 0.2);
   --shadow-inventory: 0 6px 24px rgba(0, 0, 0, 0.25);
   --shadow-glow: 0 0 20px rgba(106, 183, 255, 0.3);
   --shadow-item: 0 8px 24px rgba(0, 0, 0, 0.4);
   --shadow-balance: 0 8px 32px rgba(255, 215, 0, 0.3);
-  --shadow-banner: 0 2px 8px rgba(0, 200, 81, 0.1);
+  --shadow-banner: 0 4px 16px rgba(0, 200, 81, 0.3);
   
   /* Readable inventory design variables */
   --gradient-card-bg: linear-gradient(145deg, #2a3441 0%, #1e2832 100%);
@@ -62,52 +62,50 @@ body {
   position: relative;
 }
 
-/* 📈 TRANSPARENT STATIC BANNER - FIXED AT TOP */
+/* 📈 COMPACT ROUNDED BANNER - LIKE IN PHOTO */
 .top-banner {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--gradient-banner);
-  padding: 12px 20px;
+  padding: 8px 16px;
+  border-radius: 20px;
   z-index: 200;
   box-shadow: var(--shadow-banner);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 200, 81, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 200, 81, 0.3);
+  max-width: 280px;
+  width: auto;
+  min-width: 200px;
 }
 
 .banner-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background: rgba(0, 200, 81, 0.08);
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 200, 81, 0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  max-width: 280px;
-  width: auto;
-  min-width: 200px;
+  gap: 6px;
+  white-space: nowrap;
 }
 
 .banner-icon {
   font-size: 14px;
-  opacity: 0.8;
+  animation: bannerPulse 2s infinite;
+}
+
+@keyframes bannerPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 
 .banner-text {
   font-size: 12px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+  color: white;
   text-align: center;
   line-height: 1.2;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Currency emoji component - FIXED VERSION */
@@ -194,10 +192,10 @@ body {
   height: 14px;
 }
 
-/* Main content - WITH TOP SPACING FOR STATIC BANNER */
+/* Main content - WITH TOP SPACING FOR COMPACT BANNER */
 .main {
   flex: 1;
-  padding: 70px 20px 20px; /* Отступ для статичного баннера */
+  padding: 80px 20px 20px; /* Уменьшен верхний отступ для компактного баннера */
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -765,7 +763,7 @@ body {
   z-index: 10;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  margin-top: 50px; /* Отступ для статичного баннера */
+  margin-top: 30px; /* Уменьшенный отступ для компактного баннера */
 }
 
 .back-btn {
@@ -1384,20 +1382,16 @@ body {
 /* 📱 RESPONSIVE DESIGN - MOBILE OPTIMIZED FOR LARGER ROULETTE */
 @media (max-width: 480px) {
   .main {
-    padding: 60px 16px 16px; /* Отступ для статичного баннера на мобильных */
+    padding: 70px 16px 16px; /* Уменьшен верхний отступ для компактного баннера на мобильных */
     gap: 20px;
     padding-bottom: 140px; /* Увеличен нижний отступ для мобильных */
   }
   
-  /* MOBILE STATIC BANNER ADJUSTMENTS */
+  /* MOBILE COMPACT BANNER ADJUSTMENTS */
   .top-banner {
-    padding: 8px 16px;
-  }
-  
-  .banner-content {
+    top: 15px;
     padding: 6px 12px;
     border-radius: 16px;
-    gap: 6px;
     max-width: 240px;
     min-width: 180px;
   }
@@ -1655,7 +1649,7 @@ body {
 
   /* MOBILE PAGE HEADER ADJUSTMENT */
   .page-header {
-    margin-top: 40px; /* Отступ для статичного баннера на мобильных */
+    margin-top: 20px; /* Меньший отступ для компактного баннера на мобильных */
   }
 }
 
