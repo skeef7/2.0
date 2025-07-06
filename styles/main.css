@@ -62,7 +62,7 @@ body {
   position: relative;
 }
 
-/* 📈 COMPACT ROUNDED BANNER - LIKE IN PHOTO */
+/* 📈 FIXED COMPACT ROUNDED BANNER - STAYS IN PLACE ON SCROLL */
 .top-banner {
   position: fixed;
   top: 20px;
@@ -71,7 +71,7 @@ body {
   background: var(--gradient-banner);
   padding: 8px 16px;
   border-radius: 20px;
-  z-index: 200;
+  z-index: 1000; /* Высокий z-index чтобы баннер был поверх всего */
   box-shadow: var(--shadow-banner);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -79,6 +79,9 @@ body {
   max-width: 280px;
   width: auto;
   min-width: 200px;
+  /* Убираем любые transform или transition которые могут влиять на позицию */
+  will-change: auto;
+  pointer-events: none; /* Баннер не мешает взаимодействию с контентом */
 }
 
 .banner-content {
@@ -192,10 +195,10 @@ body {
   height: 14px;
 }
 
-/* Main content - WITH TOP SPACING FOR COMPACT BANNER */
+/* Main content - WITH TOP SPACING FOR FIXED BANNER */
 .main {
   flex: 1;
-  padding: 80px 20px 20px; /* Уменьшен верхний отступ для компактного баннера */
+  padding: 80px 20px 20px; /* Отступ сверху для фиксированного баннера */
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -763,7 +766,7 @@ body {
   z-index: 10;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  margin-top: 30px; /* Уменьшенный отступ для компактного баннера */
+  margin-top: 60px; /* Отступ для фиксированного баннера */
 }
 
 .back-btn {
@@ -1382,18 +1385,19 @@ body {
 /* 📱 RESPONSIVE DESIGN - MOBILE OPTIMIZED FOR LARGER ROULETTE */
 @media (max-width: 480px) {
   .main {
-    padding: 70px 16px 16px; /* Уменьшен верхний отступ для компактного баннера на мобильных */
+    padding: 70px 16px 16px; /* Отступ для фиксированного баннера на мобильных */
     gap: 20px;
     padding-bottom: 140px; /* Увеличен нижний отступ для мобильных */
   }
   
-  /* MOBILE COMPACT BANNER ADJUSTMENTS */
+  /* MOBILE FIXED BANNER ADJUSTMENTS */
   .top-banner {
     top: 15px;
     padding: 6px 12px;
     border-radius: 16px;
     max-width: 240px;
     min-width: 180px;
+    z-index: 1000; /* Убеждаемся что баннер поверх всего на мобильных */
   }
   
   .banner-text {
@@ -1649,7 +1653,7 @@ body {
 
   /* MOBILE PAGE HEADER ADJUSTMENT */
   .page-header {
-    margin-top: 20px; /* Меньший отступ для компактного баннера на мобильных */
+    margin-top: 50px; /* Отступ для фиксированного баннера на мобильных */
   }
 }
 
