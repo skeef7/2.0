@@ -22,12 +22,14 @@
   --gradient-epic: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
   --gradient-legendary: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
   --gradient-balance: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+  --gradient-banner: linear-gradient(135deg, #00c851 0%, #00a843 100%);
   --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.3);
   --shadow-secondary: 0 4px 16px rgba(0, 0, 0, 0.2);
   --shadow-inventory: 0 6px 24px rgba(0, 0, 0, 0.25);
   --shadow-glow: 0 0 20px rgba(106, 183, 255, 0.3);
   --shadow-item: 0 8px 24px rgba(0, 0, 0, 0.4);
   --shadow-balance: 0 8px 32px rgba(255, 215, 0, 0.3);
+  --shadow-banner: 0 4px 16px rgba(0, 200, 81, 0.3);
   
   /* Readable inventory design variables */
   --gradient-card-bg: linear-gradient(145deg, #2a3441 0%, #1e2832 100%);
@@ -58,6 +60,49 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
+}
+
+/* 📈 TOP BANNER - ENHANCED CHANCES NOTIFICATION */
+.top-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--gradient-banner);
+  padding: 12px 20px;
+  z-index: 200;
+  box-shadow: var(--shadow-banner);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 200, 81, 0.3);
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.banner-icon {
+  font-size: 16px;
+  animation: bannerPulse 2s infinite;
+}
+
+@keyframes bannerPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.banner-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  line-height: 1.2;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Currency emoji component - FIXED VERSION */
@@ -144,10 +189,10 @@ body {
   height: 14px;
 }
 
-/* Main content - WITH TOP SPACING */
+/* Main content - WITH TOP SPACING FOR BANNER */
 .main {
   flex: 1;
-  padding: 60px 20px 20px; /* Добавлено пустое пространство сверху */
+  padding: 100px 20px 20px; /* Увеличен верхний отступ для баннера */
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -715,6 +760,7 @@ body {
   z-index: 10;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  margin-top: 50px; /* Отступ для баннера */
 }
 
 .back-btn {
@@ -1333,9 +1379,22 @@ body {
 /* 📱 RESPONSIVE DESIGN - MOBILE OPTIMIZED FOR LARGER ROULETTE */
 @media (max-width: 480px) {
   .main {
-    padding: 50px 16px 16px; /* Добавлено пустое пространство сверху для мобильных */
+    padding: 90px 16px 16px; /* Увеличен верхний отступ для баннера на мобильных */
     gap: 20px;
     padding-bottom: 140px; /* Увеличен нижний отступ для мобильных */
+  }
+  
+  /* MOBILE BANNER ADJUSTMENTS */
+  .top-banner {
+    padding: 10px 16px;
+  }
+  
+  .banner-text {
+    font-size: 13px;
+  }
+  
+  .banner-icon {
+    font-size: 14px;
   }
   
   .roulette-selector {
@@ -1579,6 +1638,11 @@ body {
 
   .stat-value {
     font-size: 15px;
+  }
+
+  /* MOBILE PAGE HEADER ADJUSTMENT */
+  .page-header {
+    margin-top: 40px; /* Меньший отступ для баннера на мобильных */
   }
 }
 
