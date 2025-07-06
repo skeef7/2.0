@@ -279,13 +279,13 @@ body {
   transform: scale(1.1);
 }
 
-/* ENHANCED PRICE DISPLAY */
+/* ENHANCED PRICE DISPLAY - TRANSPARENT YELLOW BACKGROUND */
 .roulette-item .item-price {
   font-size: 14px; /* Увеличен размер шрифта */
   font-weight: 700;
   text-align: center;
   color: #ffd700;
-  background: rgba(0, 0, 0, 0.7); /* Более контрастный фон */
+  background: rgba(255, 215, 0, 0.25); /* ПРОЗРАЧНЫЙ ЖЕЛТЫЙ ФОН */
   padding: 6px 10px; /* Увеличен padding */
   border-radius: 10px; /* Увеличен border-radius */
   display: flex;
@@ -296,7 +296,7 @@ body {
   min-width: 55px; /* Увеличена минимальная ширина */
   justify-content: center;
   line-height: 1;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2); /* ЖЕЛТАЯ ТЕНЬ */
 }
 
 .roulette-item.active .item-price {
