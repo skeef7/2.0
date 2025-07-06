@@ -62,32 +62,35 @@ body {
   position: relative;
 }
 
-/* 📈 TOP BANNER - ENHANCED CHANCES NOTIFICATION */
+/* 📈 COMPACT ROUNDED BANNER - LIKE IN PHOTO */
 .top-banner {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--gradient-banner);
-  padding: 12px 20px;
+  padding: 8px 16px;
+  border-radius: 20px;
   z-index: 200;
   box-shadow: var(--shadow-banner);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 200, 81, 0.3);
+  border: 1px solid rgba(0, 200, 81, 0.3);
+  max-width: 280px;
+  width: auto;
+  min-width: 200px;
 }
 
 .banner-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  max-width: 400px;
-  margin: 0 auto;
+  gap: 6px;
+  white-space: nowrap;
 }
 
 .banner-icon {
-  font-size: 16px;
+  font-size: 14px;
   animation: bannerPulse 2s infinite;
 }
 
@@ -97,7 +100,7 @@ body {
 }
 
 .banner-text {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   color: white;
   text-align: center;
@@ -189,10 +192,10 @@ body {
   height: 14px;
 }
 
-/* Main content - WITH TOP SPACING FOR BANNER */
+/* Main content - WITH TOP SPACING FOR COMPACT BANNER */
 .main {
   flex: 1;
-  padding: 100px 20px 20px; /* Увеличен верхний отступ для баннера */
+  padding: 80px 20px 20px; /* Уменьшен верхний отступ для компактного баннера */
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -760,7 +763,7 @@ body {
   z-index: 10;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  margin-top: 50px; /* Отступ для баннера */
+  margin-top: 30px; /* Уменьшенный отступ для компактного баннера */
 }
 
 .back-btn {
@@ -1379,22 +1382,26 @@ body {
 /* 📱 RESPONSIVE DESIGN - MOBILE OPTIMIZED FOR LARGER ROULETTE */
 @media (max-width: 480px) {
   .main {
-    padding: 90px 16px 16px; /* Увеличен верхний отступ для баннера на мобильных */
+    padding: 70px 16px 16px; /* Уменьшен верхний отступ для компактного баннера на мобильных */
     gap: 20px;
     padding-bottom: 140px; /* Увеличен нижний отступ для мобильных */
   }
   
-  /* MOBILE BANNER ADJUSTMENTS */
+  /* MOBILE COMPACT BANNER ADJUSTMENTS */
   .top-banner {
-    padding: 10px 16px;
+    top: 15px;
+    padding: 6px 12px;
+    border-radius: 16px;
+    max-width: 240px;
+    min-width: 180px;
   }
   
   .banner-text {
-    font-size: 13px;
+    font-size: 11px;
   }
   
   .banner-icon {
-    font-size: 14px;
+    font-size: 12px;
   }
   
   .roulette-selector {
@@ -1642,7 +1649,7 @@ body {
 
   /* MOBILE PAGE HEADER ADJUSTMENT */
   .page-header {
-    margin-top: 40px; /* Меньший отступ для баннера на мобильных */
+    margin-top: 20px; /* Меньший отступ для компактного баннера на мобильных */
   }
 }
 
